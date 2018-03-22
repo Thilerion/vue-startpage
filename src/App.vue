@@ -49,14 +49,15 @@ html, body {
 
 .grid {
 	display: grid;
-	grid-template-columns: repeat(3, auto);
+	grid-template-columns: 1fr 4fr 1fr;
 	grid-template-rows: repeat(3, 1fr);
 	min-height: 100vh;
 	justify-content: center;
 }
 
 .h-center {
-	grid-column: 2;
+	grid-column: 1 / span 3;
+	text-align: center;
 }
 
 .v-center {
