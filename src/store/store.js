@@ -5,11 +5,13 @@ Vue.use(Vuex);
 
 import background from './modules/background';
 import time from './modules/time';
+import topsites from './modules/topsites';
 
 export default new Vuex.Store({
 	modules: {
 		background,
-		time
+		time,
+		topsites
 	},
 	state: {
 		username: "Michael"

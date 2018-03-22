@@ -7,6 +7,9 @@
 			<SpTime/>
 			<SpWelcome/>
 		</div>
+		<div class="center-bottom">
+			<SpTopSites/>
+		</div>		
 	</div>	
   </div>
 </template>
@@ -15,12 +18,14 @@
 import Background from './components/Background';
 import Time from './components/Time';
 import Welcome from './components/Welcome';
+import TopSites from './components/TopSites';
 
 export default {
 	components: {
 		SpBackground: Background,
 		SpTime: Time,
-		SpWelcome: Welcome
+		SpWelcome: Welcome,
+		SpTopSites: TopSites
 	}
 }
 </script>
@@ -46,5 +51,9 @@ html, body {
 .center-center {
 	display: inline-block;
 	font-size: 7vmin;
+}
+
+.center-bottom {
+	align-self: flex-end;
 }
 </style>

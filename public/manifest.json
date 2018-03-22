@@ -7,5 +7,8 @@
   "chrome_url_overrides": {
 	  "newtab": "index.html"
   },
-  "content_security_policy": "script-src 'sha256-iJCuheZt1ey0N7FkyVm/CXC472BUNzDDSEhL8AR8Ajo='; object-src 'self;"
+  "content_security_policy": "script-src 'sha256-iJCuheZt1ey0N7FkyVm/CXC472BUNzDDSEhL8AR8Ajo='; object-src 'self;",
+  "permissions": [
+	  "topSites"
+  ]
 }
