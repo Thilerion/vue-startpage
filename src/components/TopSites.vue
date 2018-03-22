@@ -2,8 +2,10 @@
 <div class="top-sites">
 	<ul class="site-list">
 		<li class="site-item" v-for="site in topSites" :key="site.title">
-			<img class="site-icon" :src="siteUrlFavicon(site.url)" :alt="site.title">
-			<a class="site-link" :href="site.url">{{site.title}}</a>
+			<a class="site-link" :href="site.url">
+				<img class="site-icon" :src="siteUrlFavicon(site.url)" :alt="site.title">
+				<span class="site-link-text">{{site.title}}</span>
+			</a>
 		</li>
 	</ul>
 </div>
@@ -59,10 +61,14 @@ export default {
 }
 
 .site-link {
-	color: white;
-	width: 10em;
+	color: white;	
+}
+
+.site-link-text {
+	display: block;
 	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
+	width: 10em;
 }
 </style>
