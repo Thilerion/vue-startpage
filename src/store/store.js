@@ -4,16 +4,18 @@ import Vuex from "vuex";
 Vue.use(Vuex);
 
 import background from './modules/background';
+import time from './modules/time';
 
 export default new Vuex.Store({
 	modules: {
-		background
+		background,
+		time
 	},
 	state: {
 		
 	},
 	getters: {
-		
+
 	},
 	mutations: {
 
