@@ -12,10 +12,10 @@ export default new Vuex.Store({
 		time
 	},
 	state: {
-		
+		username: "Michael"
 	},
 	getters: {
-
+		username: state => state.username
 	},
 	mutations: {
 

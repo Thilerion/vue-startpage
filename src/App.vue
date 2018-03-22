@@ -3,17 +3,20 @@
     <!--<img src="./assets/logo.png">-->
 	<SpBackground/>
 	<SpTime/>
+	<SpWelcome/>
   </div>
 </template>
 
 <script>
 import Background from './components/Background';
 import Time from './components/Time';
+import Welcome from './components/Welcome';
 
 export default {
 	components: {
 		SpBackground: Background,
-		SpTime: Time
+		SpTime: Time,
+		SpWelcome: Welcome
 	}
 }
 </script>

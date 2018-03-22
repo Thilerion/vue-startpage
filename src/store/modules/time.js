@@ -9,7 +9,13 @@ export default {
 		intervalId: null
 	},
 	getters: {
-		timeDisplay: state => state.currentTime.format(state.timeFormat)
+		timeDisplay: state => state.currentTime.format(state.timeFormat),
+		timeOfDay: state => {
+			let hour = state.currentTime.hour();
+			if (hour >= 18 || hour < 5) return 2;
+			else if (hour >= 5 && hour < 12) return 0;
+			else if (hour >= 12 && hour < 18) return 1;
+		}
 	},
 	mutations: {
 		setCurrentTime: state => state.currentTime = moment(),
