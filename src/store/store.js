@@ -14,10 +14,16 @@ export default new Vuex.Store({
 		topsites
 	},
 	state: {
-		username: "Michael"
+		username: "Michael",
+		componentsEnabled: {
+			topSites: false,
+			time: true,
+			welcome: true
+		}
 	},
 	getters: {
-		username: state => state.username
+		username: state => state.username,
+		componentsEnabled: state => state.componentsEnabled
 	},
 	mutations: {
 

@@ -4,11 +4,11 @@
 	<SpBackground/>
 	<div class="grid">
 		<div class="h-center v-center time-welcome">
-			<SpTime/>
-			<SpWelcome/>
+			<SpTime v-if="componentsEnabled.time"/>
+			<SpWelcome v-if="componentsEnabled.welcome"/>
 		</div>
 		<div class="h-center v-bottom">
-			<SpTopSites/>
+			<SpTopSites v-if="componentsEnabled.topSites"/>
 		</div>		
 	</div>	
   </div>
@@ -26,6 +26,11 @@ export default {
 		SpTime: Time,
 		SpWelcome: Welcome,
 		SpTopSites: TopSites
+	},
+	computed: {
+		componentsEnabled() {
+			return this.$store.getters.componentsEnabled;
+		}
 	}
 }
 </script>
