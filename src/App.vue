@@ -2,8 +2,12 @@
   <div id="app">
     <!--<img src="./assets/logo.png">-->
 	<SpBackground/>
-	<SpTime/>
-	<SpWelcome/>
+	<div class="grid">
+		<div class="center-center">
+			<SpTime/>
+			<SpWelcome/>
+		</div>
+	</div>	
   </div>
 </template>
 
@@ -28,7 +32,19 @@ html, body {
 
 #app {
 	color: white;
-	text-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
+	text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1);
 	font-family: sans-serif;
+}
+
+.grid {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	min-height: 100vh;
+}
+
+.center-center {
+	display: inline-block;
+	font-size: 7vmin;
 }
 </style>

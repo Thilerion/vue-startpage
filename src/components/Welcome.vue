@@ -27,7 +27,7 @@ export default {
 .welcome-text {
 	padding: 0;
 	margin: 0;
-	font-size: 30px;
+	font-size: 1em;
 	text-align: center;
 }
 </style>

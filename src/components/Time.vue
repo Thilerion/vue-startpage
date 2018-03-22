@@ -20,7 +20,7 @@ export default {
 
 <style>
 .time {
-	font-size: 100px;
-	display: inline-block;
+	font-size: 2em;
+	text-align: center;
 }
 </style>
