@@ -34,7 +34,7 @@ export default {
 			console.log("Starting time interval.");
 			let interval = setInterval(() => {
 				commit('setCurrentTime');
-			}, 1000);
+			}, 5000);
 			commit('setIntervalId', interval);
 		},
 		stopInterval: ({ commit }) => {
