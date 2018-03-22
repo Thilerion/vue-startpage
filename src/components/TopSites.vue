@@ -63,6 +63,7 @@ export default {
 	transition: all .3s ease;
 	border-radius: 10px;
 	padding: 5px .5em;
+	text-shadow: 1px 1px 3px rgba(0,0,0,0.4);
 }
 
 .site-link:hover {
