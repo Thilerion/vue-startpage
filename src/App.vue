@@ -3,11 +3,11 @@
     <!--<img src="./assets/logo.png">-->
 	<SpBackground/>
 	<div class="grid">
-		<div class="center-center">
+		<div class="h-center v-center time-welcome">
 			<SpTime/>
 			<SpWelcome/>
 		</div>
-		<div class="center-bottom">
+		<div class="h-center v-bottom">
 			<SpTopSites/>
 		</div>		
 	</div>	
@@ -41,19 +41,43 @@ html, body {
 	font-family: sans-serif;
 }
 
-.grid {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	min-height: 100vh;
-}
-
-.center-center {
+.time-welcome {
 	display: inline-block;
+	align-self: center;
 	font-size: 7vmin;
 }
 
-.center-bottom {
+.grid {
+	display: grid;
+	grid-template-columns: repeat(3, auto);
+	grid-template-rows: repeat(3, 1fr);
+	min-height: 100vh;
+	justify-content: center;
+}
+
+.h-center {
+	grid-column: 2;
+}
+
+.v-center {
+	grid-row: 2;
+}
+
+.h-left {
+	grid-column: 1;
+}
+
+.h-right {
+	grid-column: 3;
+}
+
+.v-top {
+	grid-row: 1;
+	align-self: flex-start;
+}
+
+.v-bottom {
+	grid-row: 3;
 	align-self: flex-end;
 }
 </style>

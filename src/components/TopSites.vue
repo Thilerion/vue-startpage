@@ -32,9 +32,13 @@ export default {
 </script>
 
 <style scoped>
+.top-sites {
+	display: inline-block;
+}
+
 .site-list {
 	padding-left: 0;
-	display: grid;
+	display: inline-grid;
 	grid-auto-rows: 1fr;
 	grid-template-columns: repeat(5, auto);
 	grid-column-gap: 10px;
