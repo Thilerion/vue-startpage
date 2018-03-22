@@ -25,6 +25,6 @@ export default {
 	background-position: center center;
 	background-repeat: no-repeat;
 	background-size: cover;
-	filter: brightness(95%) contrast(90%);
+	filter: brightness(90%) contrast(90%);
 }
 </style>

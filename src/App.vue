@@ -32,7 +32,7 @@ html, body {
 
 #app {
 	color: white;
-	text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1);
+	text-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
 	font-family: sans-serif;
 }
 
