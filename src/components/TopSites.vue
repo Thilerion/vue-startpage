@@ -21,7 +21,7 @@ export default {
 	methods: {
 		siteUrlFavicon(siteUrl) {
 			if (chrome.topSites !== undefined) {
-				return `chrome://favicon/${site.url}`;
+				return `chrome://favicon/${siteUrl}`;
 			} else {
 				return require('../../public/img/icons/favicon-32x32.png');
 			}
