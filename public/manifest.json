@@ -1,20 +1,11 @@
 {
   "name": "vue-startpage-2",
   "short_name": "vue-startpage-2",
-  "icons": [
-    {
-      "src": "/img/icons/android-chrome-192x192.png",
-      "sizes": "192x192",
-      "type": "image/png"
-    },
-    {
-      "src": "/img/icons/android-chrome-512x512.png",
-      "sizes": "512x512",
-      "type": "image/png"
-    }
-  ],
-  "start_url": "/index.html",
-  "display": "standalone",
-  "background_color": "#000000",
-  "theme_color": "#4DBA87"
+  "manifest_version": 2,
+  "version": "0.0.1",
+  "description": "Startpage Extension made with Vue",
+  "chrome_url_overrides": {
+	  "newtab": "index.html"
+  },
+  "content_security_policy": "script-src 'sha256-iJCuheZt1ey0N7FkyVm/CXC472BUNzDDSEhL8AR8Ajo='; object-src 'self;"
 }
