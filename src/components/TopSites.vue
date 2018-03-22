@@ -1,7 +1,10 @@
 <template>
 <div class="top-sites">
 	<ul class="site-list">
-		<li class="site-item" v-for="site in topSites" :key="site.title"><a class="site-link" :href="site.url">{{site.title}}</a></li>
+		<li class="site-item" v-for="site in topSites" :key="site.title">
+			<img :src="siteUrlFavicon(site.url)" :alt="site.title">
+			<a class="site-link" :href="site.url">{{site.title}}</a>
+		</li>
 	</ul>
 </div>
 </template>
@@ -11,6 +14,15 @@ export default {
 	computed: {
 		topSites() {
 			return this.$store.getters.topSites;
+		}
+	},
+	methods: {
+		siteUrlFavicon(siteUrl) {
+			if (chrome.topSites !== undefined) {
+				return `chrome://favicon/${site.url}`;
+			} else {
+				return require('../../public/img/icons/favicon-16x16.png');
+			}
 		}
 	},
 	beforeCreate() {
