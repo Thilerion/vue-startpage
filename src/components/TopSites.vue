@@ -60,7 +60,7 @@ export default {
 
 .site-link {
 	color: white;
-	transition: all .3s ease;
+	transition: color .4s ease, background .3s ease, text-shadow .4s ease;
 	border-radius: 10px;
 	padding: 5px .5em;
 	text-shadow: 1px 1px 3px rgba(0,0,0,0.4);
@@ -69,7 +69,7 @@ export default {
 .site-link:hover {
 	text-shadow: none;
 	color: black;
-	background: rgba(255,255,255,0.2);
+	background: rgba(255,255,255,0.4);
 }
 
 .site-link-text {
