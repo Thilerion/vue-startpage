@@ -43,8 +43,6 @@ export default {
 	display: inline-grid;
 	grid-auto-rows: 1fr;
 	grid-template-columns: repeat(5, auto);
-	grid-column-gap: 10px;
-	grid-row-gap: 1em;
 	text-align: center;
 }
 
@@ -61,7 +59,16 @@ export default {
 }
 
 .site-link {
-	color: white;	
+	color: white;
+	transition: all .3s ease;
+	border-radius: 10px;
+	padding: 5px .5em;
+}
+
+.site-link:hover {
+	text-shadow: none;
+	color: black;
+	background: rgba(255,255,255,0.2);
 }
 
 .site-link-text {
