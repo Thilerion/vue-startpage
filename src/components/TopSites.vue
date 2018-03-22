@@ -2,7 +2,7 @@
 <div class="top-sites">
 	<ul class="site-list">
 		<li class="site-item" v-for="site in topSites" :key="site.title">
-			<img :src="siteUrlFavicon(site.url)" :alt="site.title">
+			<img class="site-icon" :src="siteUrlFavicon(site.url)" :alt="site.title">
 			<a class="site-link" :href="site.url">{{site.title}}</a>
 		</li>
 	</ul>
@@ -21,7 +21,7 @@ export default {
 			if (chrome.topSites !== undefined) {
 				return `chrome://favicon/${site.url}`;
 			} else {
-				return require('../../public/img/icons/favicon-16x16.png');
+				return require('../../public/img/icons/favicon-32x32.png');
 			}
 		}
 	},
@@ -35,20 +35,30 @@ export default {
 .site-list {
 	padding-left: 0;
 	display: grid;
-	grid-auto-rows: 2em;
-	grid-template-columns: repeat(5, 8em);
-	grid-column-gap: 1em;
+	grid-auto-rows: 1fr;
+	grid-template-columns: repeat(5, auto);
+	grid-column-gap: 10px;
+	grid-row-gap: 1em;
 	text-align: center;
 }
 
 .site-item {
-	max-width: 8em;
-	white-space: nowrap;
-	overflow: hidden;
-	text-overflow: ellipsis;
+	display: flex;
+	flex-direction: column;
+}
+
+.site-icon {
+	height: 32px;
+	width: 32px;
+	align-self: center;
+	padding: 0.5em 0;
 }
 
 .site-link {
 	color: white;
+	width: 10em;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
 }
 </style>
