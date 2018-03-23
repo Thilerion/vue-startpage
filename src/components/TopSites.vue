@@ -52,6 +52,7 @@ export default {
 }
 
 .site-icon {
+	box-sizing: content-box;
 	height: 32px;
 	width: 32px;
 	align-self: center;
