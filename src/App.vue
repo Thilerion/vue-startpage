@@ -69,6 +69,7 @@ body {
 
 .weather-widget {
 	user-select: none;
+	display: inline-block;
 }
 
 .grid {

@@ -18,7 +18,7 @@ export default new Vuex.Store({
 	state: {
 		username: "Michael",
 		componentsEnabled: {
-			topSites: true,
+			topSites: false,
 			time: true,
 			welcome: true,
 			weather: true
