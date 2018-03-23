@@ -1,14 +1,21 @@
 <template>
 <div class="weather">
-	{{weatherState}}
+	<div v-if="weatherUpToDate" class="display-weather">{{currentWeather}}</div>
+	<div v-else class="loading-weather">Loading weather...</div>
 </div>
 </template>
 
 <script>
 export default {
 	computed: {
-		weatherState() {
-			return this.$store.getters.weatherState;
+		currentWeather() {
+			return this.$store.getters.currentWeather;
+		},
+		coords() {
+			return this.$store.getters.coords;
+		},
+		weatherUpToDate() {
+			return this.$store.getters.weatherUpToDate;
 		}
 	},
 	beforeCreate() {
