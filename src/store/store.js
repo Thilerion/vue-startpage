@@ -18,7 +18,8 @@ export default new Vuex.Store({
 		componentsEnabled: {
 			topSites: false,
 			time: true,
-			welcome: true
+			welcome: true,
+			weather: true
 		}
 	},
 	getters: {

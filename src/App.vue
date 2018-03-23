@@ -11,7 +11,7 @@
 			<SpTopSites v-if="componentsEnabled.topSites"/>
 		</div>
 		<div class="v-top h-right">
-			Test
+			<SpWeather v-if="componentsEnabled.weather"/>
 		</div>
 	</div>	
   </div>
@@ -22,13 +22,15 @@ import Background from './components/Background';
 import Time from './components/Time';
 import Welcome from './components/Welcome';
 import TopSites from './components/TopSites';
+import Weather from './components/Weather';
 
 export default {
 	components: {
 		SpBackground: Background,
 		SpTime: Time,
 		SpWelcome: Welcome,
-		SpTopSites: TopSites
+		SpTopSites: TopSites,
+		SpWeather: Weather
 	},
 	computed: {
 		componentsEnabled() {
