@@ -9,7 +9,10 @@
 		</div>
 		<div class="h-center v-bottom">
 			<SpTopSites v-if="componentsEnabled.topSites"/>
-		</div>		
+		</div>
+		<div class="v-top h-right">
+			Test
+		</div>
 	</div>	
   </div>
 </template>
@@ -76,6 +79,7 @@ html, body {
 
 .h-right {
 	grid-column: 3;
+	text-align: end;
 }
 
 .v-top {
