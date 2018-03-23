@@ -25,7 +25,7 @@ export default {
 	background-position: center center;
 	background-repeat: no-repeat;
 	background-size: cover;
-	filter: brightness(90%) contrast(90%);
+	filter: brightness(85%) contrast(90%);
 }
 
 .background::after {
@@ -34,6 +34,6 @@ export default {
 	position: relative;
 	height: 100%;
 	width: 100%;
-	background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0) 65%,rgba(0,0,0,0.3) 95%);
+	background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0) 60%,rgba(0,0,0,0.3) 95%);
 }
 </style>

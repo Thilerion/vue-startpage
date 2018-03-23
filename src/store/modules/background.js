@@ -1,7 +1,7 @@
 export default {
 	state: {
 		defaultBackground: require('@/assets/default_background.jpg'),
-		useDefaultBackground: true,
+		useDefaultBackground: false,
 		//externalBackground: "https://source.unsplash.com/collection/220388/1920x1080"
 		externalBackground: "https://source.unsplash.com/collection/402/1920x1080"
 	},
