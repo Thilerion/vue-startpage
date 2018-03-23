@@ -63,7 +63,7 @@ export default {
 	color: white;
 	transition: color .4s ease, background .3s ease, text-shadow .4s ease;
 	border-radius: 10px;
-	padding: 5px .5em;
+	padding: 5px 15px;
 	text-shadow: 1px 1px 3px rgba(0,0,0,0.4);
 }
 
@@ -78,6 +78,6 @@ export default {
 	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
-	width: 10em;
+	width: 110px;
 }
 </style>
