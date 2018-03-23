@@ -37,7 +37,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .weather-small-container {
 	display: inline-block;
 }

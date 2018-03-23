@@ -17,7 +17,8 @@ export default {
 		},
 		weatherUpToDate: state => {
 			return state.retrievalDate !== null && (Date.now() - state.retrievalDate) < maxTime;
-		}
+		},
+		dailyWeather: state => state.dailyWeather
 	},
 	mutations: {
 		setState: (state, newState) => {
