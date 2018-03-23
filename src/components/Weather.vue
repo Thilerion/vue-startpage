@@ -1,12 +1,19 @@
 <template>
 <div class="weather">
-	Weather here
+	{{weatherState}}
 </div>
 </template>
 
 <script>
 export default {
-
+	computed: {
+		weatherState() {
+			return this.$store.getters.weatherState;
+		}
+	},
+	beforeCreate() {
+		this.$store.dispatch('DEBUGgetTestResponse');
+	}
 }
 </script>
 

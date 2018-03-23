@@ -6,12 +6,14 @@ Vue.use(Vuex);
 import background from './modules/background';
 import time from './modules/time';
 import topsites from './modules/topsites';
+import weather from './modules/weather';
 
 export default new Vuex.Store({
 	modules: {
 		background,
 		time,
-		topsites
+		topsites,
+		weather
 	},
 	state: {
 		username: "Michael",
