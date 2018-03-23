@@ -11,7 +11,7 @@
 			<SpTopSites v-if="componentsEnabled.topSites"/>
 		</div>
 		<div class="v-top h-right">
-			<SpWeather v-if="componentsEnabled.weather"/>
+			<SpWeather v-if="componentsEnabled.weather" class="weather-widget" />
 		</div>
 	</div>	
   </div>
@@ -64,6 +64,11 @@ body {
 	display: inline-block;
 	align-self: center;
 	font-size: 7vmin;
+	user-select: none;
+}
+
+.weather-widget {
+	user-select: none;
 }
 
 .grid {
