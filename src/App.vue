@@ -67,6 +67,7 @@ body {
 	grid-template-rows: repeat(3, 1fr);
 	min-height: 100vh;
 	justify-content: center;
+	padding: 1em;
 }
 
 .h-center {
