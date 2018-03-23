@@ -43,6 +43,14 @@ html, body {
 	height: 100%;
 }
 
+body {
+	box-sizing: border-box;
+}
+
+*, *::after, *::before {
+	box-sizing: inherit;
+}
+
 #app {
 	color: white;
 	text-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
