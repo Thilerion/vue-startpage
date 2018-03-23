@@ -6,13 +6,17 @@
 	<br>
 	{{weatherSummary}}
 	<br>
-	{{iconName}}
+	<SpWeatherIcon :name="iconName"/>
 </div>
 </template>
 
 <script>
+import WeatherIcon from './WeatherIcon';
 export default {
 	props: ['currentWeather'],
+	components: {
+		SpWeatherIcon: WeatherIcon
+	},
 	computed: {
 		temperature() {
 			return this.currentWeather.temperature;
