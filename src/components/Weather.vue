@@ -1,11 +1,11 @@
 <template>
 <div class="weather">
 	<transition name="weather-loaded" mode="out-in">
-		<div class="display-weather"
+		<SpWeatherShowSmall
 			v-if="weatherUpToDate"
-			key="display">
-			{{currentWeather}}
-		</div>
+			key="display"
+			:currentWeather="currentWeather"
+		/>
 		<div class="loading-weather"
 			v-else
 			key="loading">
@@ -16,7 +16,12 @@
 </template>
 
 <script>
+import WeatherShowSmall from './WeatherShowSmall';
+
 export default {
+	components: {
+		SpWeatherShowSmall: WeatherShowSmall
+	},
 	computed: {
 		currentWeather() {
 			return this.$store.getters.currentWeather;
