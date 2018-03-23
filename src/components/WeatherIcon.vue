@@ -44,7 +44,4 @@ export default {
 </script>
 
 <style>
-.wi {
-	font-size: 3em;
-}
 </style>

@@ -1,12 +1,10 @@
 <template>
-<div>
-	{{temperature | round}}C
-	<br>
-	{{apparentTemperature | round}}C
-	<br>
-	{{weatherSummary}}
-	<br>
-	<SpWeatherIcon :name="iconName"/>
+<div class="weather-small-container">
+	<div class="top">
+		<SpWeatherIcon :name="iconName" class="weather-icon" />
+		<div class="weather-temp">{{temperature | round}}&deg;C</div>
+	</div>
+	<div class="weather-summary">{{weatherSummary}}</div>
 </div>
 </template>
 
@@ -40,5 +38,23 @@ export default {
 </script>
 
 <style>
+.weather-small-container {
+	display: inline-block;
+}
 
+.weather-small-container .top {
+	display: flex;
+	justify-content: space-between;
+	font-size: 2em;
+	line-height: 0.95;
+}
+
+.weather-icon {
+	padding: 0 8px 0 0;
+}
+
+.weather-summary {
+	text-align: center;
+	line-height: 2;
+}
 </style>
