@@ -1,7 +1,17 @@
 <template>
 <div class="weather">
-	<div v-if="weatherUpToDate" class="display-weather">{{currentWeather}}</div>
-	<div v-else class="loading-weather">Loading weather...</div>
+	<transition name="weather-loaded" mode="out-in">
+		<div class="display-weather"
+			v-if="weatherUpToDate"
+			key="display">
+			{{currentWeather}}
+		</div>
+		<div class="loading-weather"
+			v-else
+			key="loading">
+			Loading weather...
+		</div>
+	</transition>
 </div>
 </template>
 
@@ -25,5 +35,11 @@ export default {
 </script>
 
 <style>
+.weather-loaded-enter-active, .weather-loaded-leave-active {
+	transition: opacity .3s ease;
+}
 
+.weather-loaded-enter, .weather-loaded-leave-to {
+	opacity: 0;
+}
 </style>
