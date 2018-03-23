@@ -1,8 +1,6 @@
 <template>
 	<transition name="show-bg">
-	<div v-show="loaded" class="background" :style="{backgroundImage: `url(${backgroundUrl})`}">
-		
-	</div>
+	<div v-show="loaded" class="background" :style="{backgroundImage: `url(${backgroundUrl})`}"></div>
 	</transition>
 </template>
 
