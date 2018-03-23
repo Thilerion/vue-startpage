@@ -21,7 +21,8 @@ export default new Vuex.Store({
 			topSites: true,
 			time: true,
 			welcome: true,
-			weather: true
+			weather: true,
+			settings: false
 		}
 	},
 	getters: {
@@ -29,7 +30,7 @@ export default new Vuex.Store({
 		componentsEnabled: state => state.componentsEnabled
 	},
 	mutations: {
-
+		toggleSettingsOverlay: state => state.componentsEnabled.settings = !state.componentsEnabled.settings
 	},
 	actions: {
 
