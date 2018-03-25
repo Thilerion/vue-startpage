@@ -1,6 +1,7 @@
 <template>
 <transition name="fade-settings">
 	<div class="settings-overlay">
+		<div class="settings-background" :style="{backgroundImage: `url(${backgroundUrl})`}"></div>
 		<button class="close-button" @click="toggleSettingsOverlay">
 			<svg class="close-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
 				<path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
@@ -13,6 +14,11 @@
 
 <script>
 export default {
+	computed: {
+		backgroundUrl() {
+			return this.$store.getters.backgroundUrl;
+		}
+	},
 	methods: {
 		toggleSettingsOverlay() {
 			this.$store.commit("toggleSettingsOverlay");
@@ -25,10 +31,20 @@ export default {
 .settings-overlay {
 	position: fixed;
 	top: 0; bottom: 0;
-	left: 0; right: 0;
-	background: rgba(0,0,0,.95);
+	left: 0; right: 0;	
 	opacity: 1;
 	z-index: 9999;
+}
+
+.settings-background {
+	position: absolute;
+	top: 0; bottom: 0;
+	left: 0; right: 0;	
+	filter: brightness(25%) contrast(80%) blur(20px);
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	transform: scale(1.07);
 }
 
 .close-button {
