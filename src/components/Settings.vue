@@ -40,7 +40,7 @@ export default {
 			let updatedSettings = {
 				username: this.username
 			};
-			this.$store.commit("saveSettings", updatedSettings);
+			this.$store.dispatch("saveSettings", updatedSettings);
 		},
 		saveSettingsAndClose() {
 			this.saveSettings();

@@ -8,7 +8,9 @@ import time from './modules/time';
 import topsites from './modules/topsites';
 import weather from './modules/weather';
 
-export default new Vuex.Store({
+import { saveToStorage, getFromStorage } from '@/api/localstorage';
+
+export const store = new Vuex.Store({
 	modules: {
 		background,
 		time,
@@ -32,11 +34,22 @@ export default new Vuex.Store({
 	},
 	mutations: {
 		toggleSettingsOverlay: state => state.settingsOpen = !state.settingsOpen,
-		saveSettings: (state, updated) => {
-			state.username = updated.username;
-		}
+		setUsername: (state, username) => state.username = username
 	},
 	actions: {
-
+		saveSettings: ({ state, commit }, updated) => {
+			commit('setUsername', updated.username);
+			saveToStorage("username", state.username);
+		},
+		loadSettings: ({ commit }) => {
+			let stored = getFromStorage("username");
+			if (stored !== null || stored !== undefined) {
+				commit('setUsername', stored);
+			}
+		}
 	}
 });
+
+store.dispatch('loadSettings');
+
+
