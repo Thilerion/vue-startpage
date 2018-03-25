@@ -18,6 +18,8 @@ const getFromStorage = (key) => {
 	}
 
 	let str = localStorage.getItem(key);
+	if (str === null || str === undefined) return str;
+	
 	let returnObject = JSON.parse(str);
 	console.log("The following was retrieved from local storage:");
 	console.log(returnObject);
