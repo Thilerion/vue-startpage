@@ -8,12 +8,25 @@
 				<path d="M0 0h24v24H0z" fill="none"/>
 			</svg>
 		</button>
+		<div class="settings-inner">
+			<h2 class="h2-settings">Settings</h2>
+			<div class="form-group">
+				<label for="username">Name</label>
+				<input type="text" name="username" id="username" v-model="username">
+			</div>
+			<button class="save-settings" @click="saveSettings">Save settings</button>
+		</div>
 	</div>
 </transition>
 </template>
 
 <script>
 export default {
+	data() {
+		return {
+			username: null
+		}
+	},
 	computed: {
 		backgroundUrl() {
 			return this.$store.getters.backgroundUrl;
@@ -22,7 +35,16 @@ export default {
 	methods: {
 		toggleSettingsOverlay() {
 			this.$store.commit("toggleSettingsOverlay");
+		},
+		saveSettings() {
+			let updatedSettings = {
+				username: this.username
+			};
+			this.$store.commit("saveSettings", updatedSettings);
 		}
+	},
+	beforeMount() {
+		this.username = this.$store.getters.username;
 	}
 }
 </script>
@@ -40,11 +62,54 @@ export default {
 	position: absolute;
 	top: 0; bottom: 0;
 	left: 0; right: 0;	
+	z-index: -1;
 	filter: brightness(25%) contrast(80%) blur(20px);
 	background-position: center center;
 	background-repeat: no-repeat;
 	background-size: cover;
 	transform: scale(1.07);
+}
+
+.settings-inner {
+	width: 50%;
+	margin: auto;
+	padding: 1em;
+	min-height: 20vh;
+}
+
+.h2-settings {
+	font-size: 180%;
+	margin: 0;
+	text-align: center;
+}
+
+.form-group {
+	margin: 1em 0;
+}
+
+.form-group label {
+	display: block;
+	line-height: 2;
+}
+
+.form-group input[type="text"] {
+	border-radius: 4px;
+	border: 1px solid transparent;
+	padding: 0.5em;
+	color: #333;
+}
+
+button.save-settings {
+	border: 1px solid white;
+	border-radius: 5px;
+	padding: 0.6em 1em;
+	min-width: 8em;
+	transition: all .2s ease;
+}
+
+button.save-settings:hover {
+	color: #333;
+	background-color: white;
 }
 
 .close-button {

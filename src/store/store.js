@@ -31,7 +31,10 @@ export default new Vuex.Store({
 		settingsOpen: state => state.settingsOpen
 	},
 	mutations: {
-		toggleSettingsOverlay: state => state.settingsOpen = !state.settingsOpen
+		toggleSettingsOverlay: state => state.settingsOpen = !state.settingsOpen,
+		saveSettings: (state, updated) => {
+			state.username = updated.username;
+		}
 	},
 	actions: {
 
