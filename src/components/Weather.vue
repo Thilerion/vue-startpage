@@ -52,7 +52,8 @@ export default {
 		}
 	},
 	beforeCreate() {
-		this.$store.dispatch('DEBUGgetTestResponse');
+		this.$store.dispatch('getLocation');
+		//this.$store.dispatch('DEBUGgetTestResponse');
 	}
 }
 </script>
