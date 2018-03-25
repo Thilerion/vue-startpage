@@ -13,7 +13,11 @@
 		<div class="v-top h-right">
 			<SpWeather v-if="componentsEnabled.weather" class="weather-widget" />
 		</div>
-	</div>	
+		<div class="h-right v-bottom">
+			<SpSettingsButton/>
+		</div>
+	</div>
+	<SpSettings v-if="settingsOpen" />	
   </div>
 </template>
 
@@ -23,6 +27,8 @@ import Time from './components/Time';
 import Welcome from './components/Welcome';
 import TopSites from './components/TopSites';
 import Weather from './components/Weather';
+import SettingsButton from './components/SettingsButton'
+import Settings from './components/Settings'
 
 export default {
 	components: {
@@ -30,11 +36,16 @@ export default {
 		SpTime: Time,
 		SpWelcome: Welcome,
 		SpTopSites: TopSites,
-		SpWeather: Weather
+		SpWeather: Weather,
+		SpSettingsButton: SettingsButton,
+		SpSettings: Settings
 	},
 	computed: {
 		componentsEnabled() {
 			return this.$store.getters.componentsEnabled;
+		},
+		settingsOpen() {
+			return this.$store.getters.settingsOpen;
 		}
 	}
 }
@@ -60,6 +71,16 @@ body {
 	font-size: 16px;
 }
 
+button {
+	border: none;
+	padding: 0;
+	margin: 0;
+	background: transparent;
+	color: inherit;
+	outline: none;
+	cursor: pointer;
+}
+
 .time-welcome {
 	display: inline-block;
 	align-self: center;
@@ -69,6 +90,10 @@ body {
 
 .weather-widget {
 	user-select: none;
+	display: inline-block;
+}
+
+.settings-button {
 	display: inline-block;
 }
 
