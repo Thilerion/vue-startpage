@@ -14,7 +14,7 @@
 				<label for="username">Name</label>
 				<input type="text" name="username" id="username" v-model="username">
 			</div>
-			<button class="save-settings" @click="saveSettings">Save settings</button>
+			<button class="save-settings" @click="saveSettingsAndClose">Save settings</button>
 		</div>
 	</div>
 </transition>
@@ -41,6 +41,10 @@ export default {
 				username: this.username
 			};
 			this.$store.commit("saveSettings", updatedSettings);
+		},
+		saveSettingsAndClose() {
+			this.saveSettings();
+			this.toggleSettingsOverlay();
 		}
 	},
 	beforeMount() {
