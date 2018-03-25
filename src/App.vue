@@ -17,7 +17,7 @@
 			<SpSettingsButton/>
 		</div>
 	</div>
-	<SpSettings v-if="componentsEnabled.settings" />	
+	<SpSettings v-if="settingsOpen" />	
   </div>
 </template>
 
@@ -43,6 +43,9 @@ export default {
 	computed: {
 		componentsEnabled() {
 			return this.$store.getters.componentsEnabled;
+		},
+		settingsOpen() {
+			return this.$store.getters.settingsOpen;
 		}
 	}
 }

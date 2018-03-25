@@ -21,16 +21,17 @@ export default new Vuex.Store({
 			topSites: true,
 			time: true,
 			welcome: true,
-			weather: true,
-			settings: false
-		}
+			weather: true
+		},
+		settingsOpen: true
 	},
 	getters: {
 		username: state => state.username,
-		componentsEnabled: state => state.componentsEnabled
+		componentsEnabled: state => state.componentsEnabled,
+		settingsOpen: state => state.settingsOpen
 	},
 	mutations: {
-		toggleSettingsOverlay: state => state.componentsEnabled.settings = !state.componentsEnabled.settings
+		toggleSettingsOverlay: state => state.settingsOpen = !state.settingsOpen
 	},
 	actions: {
 
