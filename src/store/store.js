@@ -25,7 +25,7 @@ export const store = new Vuex.Store({
 			welcome: true,
 			weather: true
 		},
-		settingsOpen: true
+		settingsOpen: false
 	},
 	getters: {
 		username: state => state.username,
