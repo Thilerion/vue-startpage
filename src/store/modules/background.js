@@ -13,8 +13,8 @@ export default {
 		],
 		currentUnsplashCollection: 402,
 		resolution: {
-			width: window.screen.width,
-			height: window.screen.height
+			width: Math.max(window.screen.width, 1366),
+			height: Math.max(window.screen.height, 768)
 		}
 	},
 	getters: {
