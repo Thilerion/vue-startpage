@@ -43,7 +43,6 @@ export const store = new Vuex.Store({
 		},
 		loadSettings: ({ commit }) => {
 			let stored = getFromStorage("username");
-			console.log(stored);
 			if (stored !== null && stored !== undefined) {
 				commit('setUsername', stored);
 			}

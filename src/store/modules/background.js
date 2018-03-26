@@ -40,7 +40,6 @@ export default {
 		},
 		loadBackgroundSettings({commit}) {
 			let stored = getFromStorage("backgroundId");
-			console.log(stored);
 			if (stored !== null && stored !== undefined) {
 				commit('setBackgroundId', stored);
 			}

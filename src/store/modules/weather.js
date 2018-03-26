@@ -36,26 +36,20 @@ export default {
 	},
 	actions: {
 		getLocation({commit, getters}) {
-			console.warn("This is the getLocation action inside the weather store.");
 			return new Promise((resolve, reject) => {
 				if (getters.coords.latitude === null) {
-					console.warn("Location unknown, so callign the getLocation function.");
 					getLocation().then(pos => {
-						console.warn("Location has been retrieved, so setting it now.");
 						let posObj = { lat: pos.coords.latitude, long: pos.coords.longitude };
 						commit('setLocation', posObj);
 						resolve();
 					});
 				} else {
-					console.warn("Location already known, so resolving.");
 					resolve(getters.coords);
 				}
 			})			
 		},
 		getWeather({ commit, getters, dispatch, state }) {
-			console.warn("Dispatch get location from the weather store.");
 			if (getters.weatherUpToDate === true) {
-				console.warn("Weather is up to date, so not getting location and weather.");
 				return;
 			}
 			if (useDebugTestResponse === true) {
@@ -74,7 +68,6 @@ export default {
 		},
 		loadWeatherFromStorage({commit}) {
 			let stored = getFromStorage("weather");
-			console.log(stored);
 			if (stored !== null && stored !== undefined) {
 				commit('setState', stored);
 			}

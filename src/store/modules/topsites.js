@@ -10,10 +10,8 @@ export default {
 	},
 	actions: {
 		loadTopSites: ({commit}) => {
-			console.log("Loading Top Sites.");
 			if (chrome.topSites) {
 				chrome.topSites.get(function (arrayOfTopSites) {
-					console.log(arrayOfTopSites);
 					commit('setTopSites', arrayOfTopSites);
 				});
 			} else {

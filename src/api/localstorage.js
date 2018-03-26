@@ -6,9 +6,6 @@ const saveToStorage = (key, saveObj) => {
 
 	let saveString = JSON.stringify(saveObj);
 	localStorage.setItem(key, saveString);
-
-	console.log("The following was saved to local storage:");
-	console.log(localStorage.getItem(key));
 }
 
 const getFromStorage = (key) => {
@@ -21,8 +18,6 @@ const getFromStorage = (key) => {
 	if (str === null || str === undefined) return str;
 	
 	let returnObject = JSON.parse(str);
-	console.log("The following was retrieved from local storage:");
-	console.log(returnObject);
 	return returnObject;
 }
 

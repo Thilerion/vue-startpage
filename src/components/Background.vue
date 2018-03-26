@@ -17,12 +17,10 @@ export default {
 		}
 	},
 	created() {
-		console.log("Loading bg...");
-		console.time("bg");
+		console.time("Background load time");
 		let bgImg = new Image();
 		bgImg.onload = () => {
-			console.log("Bg loaded: " + bgImg.src);
-			console.timeEnd("bg");
+			console.timeEnd("Background load time");
 			this.loaded = true;
 		}
 		bgImg.src = this.backgroundUrl;

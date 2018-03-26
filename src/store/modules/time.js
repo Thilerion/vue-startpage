@@ -31,14 +31,12 @@ export default {
 			dispatch('startInterval');
 		},
 		startInterval: ({commit}) => {
-			console.log("Starting time interval.");
 			let interval = setInterval(() => {
 				commit('setCurrentTime');
 			}, 5000);
 			commit('setIntervalId', interval);
 		},
 		stopInterval: ({ commit }) => {
-			console.log("Clearing interval.");
 			commit('clearInterval');
 		}
 	}
