@@ -21,7 +21,7 @@ export default {
 		console.time("bg");
 		let bgImg = new Image();
 		bgImg.onload = () => {
-			console.log("Bg loaded");
+			console.log("Bg loaded: " + bgImg.src);
 			console.timeEnd("bg");
 			this.loaded = true;
 		}

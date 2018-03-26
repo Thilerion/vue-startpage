@@ -12,13 +12,16 @@ export default {
 			{ name: "", id: 334800 }
 		],
 		currentUnsplashCollection: 402,
-		resolution: "1920x1080"
+		resolution: {
+			width: window.screen.width,
+			height: window.screen.height
+		}
 	},
 	getters: {
 		backgroundUrl: state => {
 			if (state.useDefaultBackground === true) return state.defaultBackground;
 			else {
-				return `${state.unsplashBaseUrl}${state.currentUnsplashCollection}/${state.resolution}`;
+				return `${state.unsplashBaseUrl}${state.currentUnsplashCollection}/${state.resolution.width}x${state.resolution.height}`;
 			}
 		}
 	},
