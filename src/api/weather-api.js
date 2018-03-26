@@ -1,4 +1,10 @@
-export { getTrueReducedWeatherResponse };
+export { getTrueReducedWeatherResponse, getRenewedTestResponse };
+
+function getRenewedTestResponse() {
+	let res = reduceApiResponse(testDarkSkyApi);
+	res.retrievalDate = Date.now() * 1;
+	return res;
+}	
 
 function getTrueReducedWeatherResponse({latitude, longitude}) {
 	let url = `https://glacial-fortress-87562.herokuapp.com/https%3A%2F%2Fapi.darksky.net%2Fforecast/${latitude},${longitude}?lang=nl&units=ca&exclude=minutely,hourly,alerts,flags`
