@@ -68,7 +68,6 @@ body {
 	color: white;
 	text-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
 	font-family: sans-serif;
-	font-size: 16px;
 }
 
 button {
@@ -133,4 +132,12 @@ button {
 	grid-row: 3;
 	align-self: flex-end;
 }
+
+@media screen and (max-width: 1300px) {
+	body {
+		font-size: 87.5%;
+	}
+}
+
+
 </style>
