@@ -27,6 +27,26 @@
 				</div>
 			</div>
 
+			<div class="settings-group">
+				<h3 class="settings-group-header">Widgets</h3>
+				<div class="form-group">
+					<label for="setting-top-sites">Most visited websites</label>
+					<input type="checkbox" name="setting-top-sites" id="setting-top-sites" v-model="componentsEnabled.topSites">
+				</div>
+				<div class="form-group">
+					<label for="setting-time">Time</label>
+					<input type="checkbox" name="setting-time" id="setting-time" v-model="componentsEnabled.time">
+				</div>
+				<div class="form-group">
+					<label for="setting-welcome">Greeting</label>
+					<input type="checkbox" name="setting-welcome" id="setting-welcome" v-model="componentsEnabled.welcome">
+				</div>
+				<div class="form-group">
+					<label for="setting-weather">Weather</label>
+					<input type="checkbox" name="setting-weather" id="setting-weather" v-model="componentsEnabled.weather">
+				</div>
+			</div>
+
 			<button class="save-settings" @click="saveSettingsAndClose">Save settings</button>
 		</div>
 	</div>
@@ -38,6 +58,7 @@ export default {
 	data() {
 		return {
 			username: null,
+			componentsEnabled: {},
 			currentUnsplashCollection: null
 		}
 	},
@@ -55,7 +76,8 @@ export default {
 		},
 		saveSettings() {
 			let updatedSettings = {
-				username: this.username
+				username: this.username,
+				componentsEnabled: this.componentsEnabled
 			};
 			this.$store.dispatch("saveSettings", updatedSettings);
 			this.$store.dispatch("saveBackgroundSettings", this.currentUnsplashCollection);
@@ -68,6 +90,7 @@ export default {
 	beforeMount() {
 		this.username = this.$store.getters.username;
 		this.currentUnsplashCollection = this.$store.getters.currentUnsplashCollection;
+		this.componentsEnabled = this.$store.getters.componentsEnabled;
 	}
 }
 </script>

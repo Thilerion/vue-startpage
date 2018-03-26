@@ -35,17 +35,26 @@ export const store = new Vuex.Store({
 	mutations: {
 		toggleSettingsOverlay: state => state.settingsOpen = !state.settingsOpen,
 		setUsername: (state, username) => state.username = username,
+		setComponentsEnabled: (state, componentsEnabled) => {
+			state.componentsEnabled = Object.assign(state.componentsEnabled, componentsEnabled);
+		},
 		disableWeatherComponent: state => state.componentsEnabled.weather = false
 	},
 	actions: {
 		saveSettings: ({ state, commit }, updated) => {
 			commit('setUsername', updated.username);
+			commit('setComponentsEnabled', updated.componentsEnabled);
 			saveToStorage("username", state.username);
+			saveToStorage("componentsEnabled", JSON.stringify(state.componentsEnabled));
 		},
 		loadSettings: ({ commit }) => {
-			let stored = getFromStorage("username");
-			if (stored !== null && stored !== undefined) {
-				commit('setUsername', stored);
+			let storedName = getFromStorage("username");
+			if (storedName !== null && storedName !== undefined) {
+				commit('setUsername', storedName);
+			}
+			let storedCompsEnabled = getFromStorage("componentsEnabled");
+			if (storedCompsEnabled !== null && storedCompsEnabled !== undefined) {
+				commit('setComponentsEnabled', JSON.parse(storedCompsEnabled));
 			}
 		}
 	}
