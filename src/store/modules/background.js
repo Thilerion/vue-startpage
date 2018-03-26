@@ -13,7 +13,7 @@ export default {
 			{ name: "Pastel & Pale", subtitle: "", id: 531563 },
 			{ name: "Reflections", subtitle: "", id: 334800 }
 		],
-		currentUnsplashCollection: 1,
+		currentUnsplashCollection: 2,
 		resolution: {
 			width: Math.max(window.screen.width, 1366),
 			height: Math.max(window.screen.height, 768)
