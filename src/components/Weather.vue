@@ -52,7 +52,7 @@ export default {
 		}
 	},
 	beforeCreate() {
-		console.warn("Dispatch get weather from Weather.vue");
+		this.$store.dispatch("loadWeatherFromStorage");
 		this.$store.dispatch('getWeather');
 	}
 }
