@@ -27,7 +27,7 @@
 				</div>
 			</div>
 
-			<div class="settings-group">
+			<div class="settings-group settings-components">
 				<h3 class="settings-group-header">Widgets</h3>
 				<div class="form-group">
 					<label for="setting-top-sites">Most visited websites</label>
@@ -109,7 +109,7 @@ export default {
 	top: 0; bottom: 0;
 	left: 0; right: 0;	
 	z-index: -1;
-	filter: brightness(25%) contrast(80%) blur(20px);
+	filter: brightness(25%) contrast(80%) blur(0.7em);
 	background-position: center center;
 	background-repeat: no-repeat;
 	background-size: cover;
@@ -119,12 +119,12 @@ export default {
 .settings-inner {
 	width: 50%;
 	margin: auto;
-	padding: 1em;
+	padding: 12px;
 	min-height: 20vh;
 }
 
 .h2-settings {
-	font-size: 180%;
+	font-size: 1.8em;
 	margin: 0;
 	text-align: center;
 }
@@ -143,6 +143,18 @@ export default {
 	border: 1px solid transparent;
 	padding: 0.5em;
 	color: #333;
+}
+
+.settings-components label {
+	display: inline-block;
+	min-width: 10em;
+	width: 40%;
+	max-width: 20em;
+}
+
+.settings-components input {
+	margin: 0 1em;
+	vertical-align: middle;
 }
 
 button.save-settings {
@@ -165,8 +177,8 @@ button.save-settings:hover {
 }
 
 .close-icon {
-	height: 42px;
-	width: 42px;
+	height: 2.5em;
+	width: 2.5em;
 }
 
 .fade-settings-enter-active, .fade-settings-leave-active {
@@ -182,6 +194,6 @@ button.save-settings:hover {
 }
 
 .fade-settings-leave-to {
-	transform: scale(0.9);
+	transform: scale(0.8);
 }
 </style>
