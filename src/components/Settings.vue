@@ -18,7 +18,7 @@
 					<input type="text" name="username" id="username" v-model="username">
 				</div>
 				<div class="form-group">
-					<label for="bg-image">Background image</label>
+					<label for="bg-image">Background image collection</label>
 					<select name="bg-image" v-model="currentUnsplashCollection">
 						<option v-for="(col, index) in possibleUnsplashCollections" :value="index" :key="index">
 							{{col.name}}
