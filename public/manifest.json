@@ -1,9 +1,9 @@
 {
-  "name": "vue-startpage-2",
-  "short_name": "vue-startpage-2",
+  "name": "Nieuw Tabblad extensie",
+  "short_name": "Nieuw Tabblad extensie",
   "manifest_version": 2,
-  "version": "0.0.1",
-  "description": "Startpage Extension made with Vue",
+  "version": "0.2.0",
+  "description": "Nieuw tabblad extensie, gemaakt met Vue, door Michael",
   "chrome_url_overrides": {
 	  "newtab": "index.html"
   },
