@@ -58,6 +58,7 @@ html, body {
 
 body {
 	box-sizing: border-box;
+	font-size: initial;
 }
 
 *, *::after, *::before {
@@ -136,6 +137,7 @@ button {
 @media screen and (max-width: 1300px) {
 	body {
 		font-size: 87.5%;
+		font-size: 75%;
 	}
 }
 

@@ -53,7 +53,7 @@ export default {
 
 .day-icon {
 	font-size: 2em;
-	padding: 8px 0;
+	padding: 0.25em 0;
 	line-height: 0.5;
 }
 
@@ -73,7 +73,7 @@ export default {
 	padding: 8px;
 	text-align: center;
 	display: flex;
-	font-size: 12px;
+	font-size: 75%;
 }
 
 .day-weather {

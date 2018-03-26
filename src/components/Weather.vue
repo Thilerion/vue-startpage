@@ -96,7 +96,7 @@ export default {
 	transform-origin: inherit;;
 	width: auto;
 	white-space: nowrap;
-	max-width: 60vw;
+	max-width: 75em;
 	overflow: hidden;
 	right: 0;
 }
