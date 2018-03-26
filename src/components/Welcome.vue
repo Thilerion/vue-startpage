@@ -19,6 +19,11 @@ export default {
 		welcomeString() {
 			return this.timeOfDayStrings[this.timeOfDay];
 		}
+	},
+	beforeMount() {
+		if (this.username == null || this.username === "") {
+			this.$store.commit("toggleSettingsOverlay");
+		}
 	}
 }
 </script>
