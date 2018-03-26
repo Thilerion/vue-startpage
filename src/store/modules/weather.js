@@ -7,32 +7,37 @@ const useDebugTestResponse = false;
 
 export default {
 	state: {
-		latitude: null,
-		longitude: null,
-		retrievalDate: null,
-		currentWeather: {},
-		dailyWeather: []
+		weather: {
+			latitude: null,
+			longitude: null,
+			retrievalDate: null,
+			currentWeather: {},
+			dailyWeather: []
+		},
+		weatherError: false
 	},
 	getters: {
-		currentWeather: state => state.currentWeather,
+		currentWeather: state => state.weather.currentWeather,
 		coords: state => {
-			return {latitude: state.latitude, longitude: state.longitude}
+			return {latitude: state.weather.latitude, longitude: state.weather.longitude}
 		},
 		weatherUpToDate: state => {
-			return state.retrievalDate !== null && (Date.now() - state.retrievalDate) < maxTime;
+			return state.weather.retrievalDate !== null && (Date.now() - state.weather.retrievalDate) < maxTime;
 		},
-		dailyWeather: state => state.dailyWeather
+		dailyWeather: state => state.weather.dailyWeather,
+		weatherError: state => state.weatherError
 	},
 	mutations: {
 		setState: (state, newState) => {
 			for (let key in newState) {
-				state[key] = newState[key];
+				state.weather[key] = newState[key];
 			}
 		},
 		setLocation: (state, { lat, long }) => {
-			state.latitude = lat;
-			state.longitude = long;
-		}
+			state.weather.latitude = lat;
+			state.weather.longitude = long;
+		},
+		setWeatherRetrievalError: state => state.weatherError = true
 	},
 	actions: {
 		getLocation({commit, getters}) {
@@ -65,12 +70,12 @@ export default {
 				let newWeatherResponse = getTrueReducedWeatherResponse(coords);
 				newWeatherResponse.then(function (res) {
 					commit('setState', res);
-					saveToStorage("weather", state);
+					saveToStorage("weather", state.weather);
 				});
 			})
 			.catch(function (err) {
 				console.warn(err);
-				commit('disableWeatherComponent');
+				commit('setWeatherRetrievalError');
 			});			
 		},
 		loadWeatherFromStorage({commit}) {

@@ -15,8 +15,9 @@
 
 		<div class="loading-weather"
 			v-else
-			key="loading">
-			Loading weather...
+			key="loading"
+			:style="placeholderStyle">
+			{{weatherPlaceholderMessage}}
 		</div>
 
 	</transition>
@@ -34,7 +35,9 @@ export default {
 	},
 	data() {
 		return {
-			popupActive: false
+			popupActive: false,
+			deactivateWeatherErrorMessage: false,
+			weatherPlaceholderMessage: "Loading weather..."
 		}
 	},
 	computed: {
@@ -49,11 +52,26 @@ export default {
 		},
 		dailyWeather() {
 			return this.$store.getters.dailyWeather;
+		},
+		isWeatherError() {
+			return this.$store.getters.weatherError;
+		},
+		placeholderStyle() {
+			if (this.deactivateWeatherErrorMessage === false) return {'opacity': 1};
+			else return {'opacity': 0};
 		}
 	},
 	beforeCreate() {
 		this.$store.dispatch("loadWeatherFromStorage");
 		this.$store.dispatch('getWeather');
+	},
+	watch: {
+		isWeatherError(newVal, oldVal) {
+			if (newVal === true) {
+				this.weatherPlaceholderMessage = "Error retrieving weather. Is location enabled?";
+				this.deactivateWeatherErrorMessage = true;
+			}
+		}
 	}
 }
 </script>
@@ -98,5 +116,9 @@ export default {
 .weather-large-popup-enter, .weather-large-popup-leave-to {
 	opacity: 0;
 	transform: scale(0);
+}
+
+.loading-weather {
+	transition: opacity 30s linear;
 }
 </style>
