@@ -1,4 +1,4 @@
-import { DEBUGgetReducedWeatherResponse } from '@/api/weather-api';
+import { getTrueReducedWeatherResponse } from '@/api/weather-api';
 import getLocation from '@/api/location-api';
 
 const maxTime = 60 * 60 * 1000; //60 minutes until new weather should be retrieved
@@ -33,17 +33,32 @@ export default {
 		}
 	},
 	actions: {
-		DEBUGgetTestResponse({commit}) {
-			DEBUGgetReducedWeatherResponse().then(function (res) {
-				res.retrievalDate = Date.now();
-				commit('setState', res);
-			});
+		getLocation({commit, getters}) {
+			console.warn("This is the getLocation action inside the weather store.");
+			return new Promise((resolve, reject) => {
+				if (getters.coords.latitude === null) {
+					console.warn("Location unknown, so callign the getLocation function.");
+					getLocation().then(pos => {
+						console.warn("Location has been retrieved, so setting it now.");
+						let posObj = { lat: pos.coords.latitude, long: pos.coords.longitude };
+						commit('setLocation', posObj);
+						resolve();
+					});
+				} else {
+					console.warn("Location already known, so resolving.");
+					resolve(getters.coords);
+				}
+			})			
 		},
-		getLocation({commit}) {
-			getLocation().then(pos => {
-				let posObj = { lat: pos.coords.latitude, long: pos.coords.longitude };
-				commit('setLocation', posObj);
-			});
+		getWeather({ commit, getters, dispatch }) {
+			console.warn("Dispatch get location from the weather store.");
+			dispatch('getLocation').then(() => {
+				let coords = getters.coords;
+				let newWeatherResponse = getTrueReducedWeatherResponse(coords);
+				newWeatherResponse.then(function (res) {
+					commit('setState', res);
+				});
+			});			
 		}
 	}
 };

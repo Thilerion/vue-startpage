@@ -1,13 +1,14 @@
-export { DEBUGgetReducedWeatherResponse };
+export { getTrueReducedWeatherResponse };
 
-function DEBUGgetReducedWeatherResponse() {
-	console.log("Now simulating weather async request, 1500 ms.");
-	return new Promise(function (resolve) {
-		setTimeout(() => {
-			console.log("DEBUG reduced weather response: timeout complete. Returning response now.");
-			resolve(reduceApiResponse(testDarkSkyApi));
-		}, 1500)
-	})
+function getTrueReducedWeatherResponse({latitude, longitude}) {
+	let url = `https://glacial-fortress-87562.herokuapp.com/https%3A%2F%2Fapi.darksky.net%2Fforecast/${latitude},${longitude}?lang=nl&units=ca&exclude=minutely,hourly,alerts,flags`
+	return fetch(url)
+		.then(function (response) {
+			return response.json();
+		})
+		.then(function (json) {
+			return reduceApiResponse(json);
+		})
 }
 
 function reduceApiResponse(resp) {
@@ -34,13 +35,15 @@ function reduceApiResponse(resp) {
 		};
 		s.dailyWeather.push(d);
 	});
-
-	console.log(s);
 	return s;
 }
 
 /* RESPONSE URL: 
-https://api.darksky.net/forecast/afe76404c3817e2d943b860cbd774e30/51.910871199999995,4.456558?lang=nl&units=ca&exclude=minutely,hourly,alerts,flags
+https://api.darksky.net/forecast/afe76404c3817e2d943b860cbd774e30/51.910871199999995,4.456558
+
+OR
+
+https://glacial-fortress-87562.herokuapp.com/https%3A%2F%2Fapi.darksky.net%2Fforecast/51.910871199999995,4.456558?lang=nl&units=ca&exclude=minutely,hourly,alerts,flags
 */
 
 const testDarkSkyApi = {

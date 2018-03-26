@@ -52,8 +52,8 @@ export default {
 		}
 	},
 	beforeCreate() {
-		this.$store.dispatch('getLocation');
-		//this.$store.dispatch('DEBUGgetTestResponse');
+		console.warn("Dispatch get weather from Weather.vue");
+		this.$store.dispatch('getWeather');
 	}
 }
 </script>
