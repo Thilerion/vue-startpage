@@ -147,10 +147,18 @@ button.save-settings:hover {
 }
 
 .fade-settings-enter-active, .fade-settings-leave-active {
-	transition: opacity .4s ease;
+	transition: all .5s ease;
 }
 
 .fade-settings-enter, .fade-settings-leave-to {
 	opacity: 0;
+}
+
+.fade-settings-enter {
+	transform: scale(1.1);
+}
+
+.fade-settings-leave-to {
+	transform: scale(0.9);
 }
 </style>
