@@ -1,8 +1,9 @@
-import { getTrueReducedWeatherResponse } from '@/api/weather-api';
+import { getTrueReducedWeatherResponse, getRenewedTestResponse } from '@/api/weather-api';
 import getLocation from '@/api/location-api';
 import { saveToStorage, getFromStorage } from '@/api/localstorage';
 
 const maxTime = 60 * 60 * 1000; //60 minutes until new weather should be retrieved
+const useDebugTestResponse = true;
 
 export default {
 	state: {
@@ -57,12 +58,16 @@ export default {
 				console.warn("Weather is up to date, so not getting location and weather.");
 				return;
 			}
+			if (useDebugTestResponse === true) {
+				console.warn("Weather not up to date, but 'useDebugTestResponse' is set to true, so retrieving %ctest weather response.", "font-weight:900;")
+				dispatch('getTestWeather');
+				return;
+			}
 			dispatch('getLocation').then(() => {
 				let coords = getters.coords;
 				let newWeatherResponse = getTrueReducedWeatherResponse(coords);
 				newWeatherResponse.then(function (res) {
 					commit('setState', res);
-					console.log(JSON.parse(JSON.stringify(state)));
 					saveToStorage("weather", state);
 				});
 			});			
@@ -73,6 +78,10 @@ export default {
 			if (stored !== null && stored !== undefined) {
 				commit('setState', stored);
 			}
+		},
+		getTestWeather({commit}) {
+			let testResponseState = getRenewedTestResponse();
+			commit('setState', testResponseState);
 		}
 	}
 };
