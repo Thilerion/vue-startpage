@@ -2,8 +2,8 @@ import { getTrueReducedWeatherResponse, getRenewedTestResponse } from '@/api/wea
 import getLocation from '@/api/location-api';
 import { saveToStorage, getFromStorage } from '@/api/localstorage';
 
-const maxTime = 60 * 60 * 1000; //60 minutes until new weather should be retrieved
-const useDebugTestResponse = true;
+const maxTime = 2 * (60 * 60 * 1000); //2 hours until new weather should be retrieved
+const useDebugTestResponse = false;
 
 export default {
 	state: {

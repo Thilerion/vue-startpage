@@ -18,9 +18,9 @@ export const store = new Vuex.Store({
 		weather
 	},
 	state: {
-		username: "Michael",
+		username: "[enter name in settings]",
 		componentsEnabled: {
-			topSites: false,
+			topSites: true,
 			time: true,
 			welcome: true,
 			weather: true
