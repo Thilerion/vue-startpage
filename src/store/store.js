@@ -34,7 +34,8 @@ export const store = new Vuex.Store({
 	},
 	mutations: {
 		toggleSettingsOverlay: state => state.settingsOpen = !state.settingsOpen,
-		setUsername: (state, username) => state.username = username
+		setUsername: (state, username) => state.username = username,
+		disableWeatherComponent: state => state.componentsEnabled.weather = false
 	},
 	actions: {
 		saveSettings: ({ state, commit }, updated) => {

@@ -42,6 +42,9 @@ export default {
 						let posObj = { lat: pos.coords.latitude, long: pos.coords.longitude };
 						commit('setLocation', posObj);
 						resolve();
+					})
+					.catch(function (err) {
+						reject(err);	
 					});
 				} else {
 					resolve(getters.coords);
@@ -64,6 +67,10 @@ export default {
 					commit('setState', res);
 					saveToStorage("weather", state);
 				});
+			})
+			.catch(function (err) {
+				console.warn(err);
+				commit('disableWeatherComponent');
 			});			
 		},
 		loadWeatherFromStorage({commit}) {
