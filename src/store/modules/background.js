@@ -15,8 +15,8 @@ export default {
 		],
 		currentUnsplashCollection: 2,
 		resolution: {
-			width: Math.max(window.screen.width, 1366),
-			height: Math.max(window.screen.height, 768)
+			width: Math.max(window.screen.width * window.devicePixelRatio, 1366),
+			height: Math.max(window.screen.height * window.devicePixelRatio, 768)
 		}
 	},
 	getters: {
