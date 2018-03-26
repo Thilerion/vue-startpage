@@ -1,31 +1,46 @@
+import { saveToStorage, getFromStorage } from '@/api/localstorage';
+
 export default {
 	state: {
 		defaultBackground: require('@/assets/default_background.jpg'),
-		useDefaultBackground: true,
+		useDefaultBackground: false,
 		unsplashBaseUrl: "https://source.unsplash.com/collection/",
 		unsplashCollections: [
-			{ name: "", id: 220388 },
-			{ name: "", id: 402 },
-			{ name: "", id: 869015 },
-			{ name: "", id: 420324 },
-			{ name: "", id: 531563 },
-			{ name: "", id: 334800 }
+			{ name: "MacOS Desktop Wallpapers", subtitle: "My favourite desktop wallpapers for MacOS", id: 220388 },
+			{ name: "Desktop Wallpapers", subtitle: "The ultimate wallpaper collection", id: 402 },
+			{ name: "FLOOD", subtitle: "Water. Ocean. Falls.", id: 869015 },
+			{ name: "Blurrrr", subtitle: "Focus can be so overrated. Sometimes the blurrier the better.", id: 420324 },
+			{ name: "Pastel & Pale", subtitle: "", id: 531563 },
+			{ name: "Reflections", subtitle: "", id: 334800 }
 		],
-		currentUnsplashCollection: 402,
+		currentUnsplashCollection: 1,
 		resolution: "1920x1080"
 	},
 	getters: {
 		backgroundUrl: state => {
 			if (state.useDefaultBackground === true) return state.defaultBackground;
 			else {
-				return `${state.unsplashBaseUrl}${state.currentUnsplashCollection}/${state.resolution}`;
+				let unsplashId = state.unsplashCollections[state.currentUnsplashCollection].id;
+				return `${state.unsplashBaseUrl}${unsplashId}/${state.resolution}`;
 			}
-		}
+		},
+		currentUnsplashCollection: state => state.currentUnsplashCollection,
+		possibleUnsplashCollections: state => state.unsplashCollections
 	},
 	mutations: {
-
+		setBackgroundId: (state, index) => state.currentUnsplashCollection = index
 	},
 	actions: {
-
+		saveBackgroundSettings({commit}, index) {
+			commit("setBackgroundId", index);
+			saveToStorage("backgroundId", index);
+		},
+		loadBackgroundSettings({commit}) {
+			let stored = getFromStorage("backgroundId");
+			console.log(stored);
+			if (stored !== null && stored !== undefined) {
+				commit('setBackgroundId', stored);
+			}
+		}
 	}
 }

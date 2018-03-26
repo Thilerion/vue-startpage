@@ -8,12 +8,25 @@
 				<path d="M0 0h24v24H0z" fill="none"/>
 			</svg>
 		</button>
+
 		<div class="settings-inner">
 			<h2 class="h2-settings">Settings</h2>
-			<div class="form-group">
-				<label for="username">Name</label>
-				<input type="text" name="username" id="username" v-model="username">
+			<div class="settings-group">
+				<h3 class="settings-group-header">General</h3>
+				<div class="form-group">
+					<label for="username">Name</label>
+					<input type="text" name="username" id="username" v-model="username">
+				</div>
+				<div class="form-group">
+					<label for="bg-image">Background image</label>
+					<select name="bg-image" v-model="currentUnsplashCollection">
+						<option v-for="(col, index) in possibleUnsplashCollections" :value="index" :key="index">
+							{{col.name}}
+						</option>
+					</select>
+				</div>
 			</div>
+
 			<button class="save-settings" @click="saveSettingsAndClose">Save settings</button>
 		</div>
 	</div>
@@ -24,12 +37,16 @@
 export default {
 	data() {
 		return {
-			username: null
+			username: null,
+			currentUnsplashCollection: null
 		}
 	},
 	computed: {
 		backgroundUrl() {
 			return this.$store.getters.backgroundUrl;
+		},
+		possibleUnsplashCollections() {
+			return this.$store.getters.possibleUnsplashCollections;
 		}
 	},
 	methods: {
@@ -41,6 +58,7 @@ export default {
 				username: this.username
 			};
 			this.$store.dispatch("saveSettings", updatedSettings);
+			this.$store.dispatch("saveBackgroundSettings", this.currentUnsplashCollection);
 		},
 		saveSettingsAndClose() {
 			this.saveSettings();
@@ -49,6 +67,7 @@ export default {
 	},
 	beforeMount() {
 		this.username = this.$store.getters.username;
+		this.currentUnsplashCollection = this.$store.getters.currentUnsplashCollection;
 	}
 }
 </script>

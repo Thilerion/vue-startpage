@@ -21,11 +21,14 @@ export default {
 		console.time("bg");
 		let bgImg = new Image();
 		bgImg.onload = () => {
-			console.log("Bg loaded");
+			console.log("Bg loaded: " + bgImg.src);
 			console.timeEnd("bg");
 			this.loaded = true;
 		}
 		bgImg.src = this.backgroundUrl;
+	},
+	beforeCreate() {
+		this.$store.dispatch('loadBackgroundSettings');
 	}
 }
 </script>
