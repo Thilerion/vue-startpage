@@ -2,7 +2,7 @@
   "name": "Nieuw Tabblad extensie",
   "short_name": "Nieuw Tabblad extensie",
   "manifest_version": 2,
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Nieuw tabblad extensie, gemaakt met Vue, door Michael",
   "chrome_url_overrides": {
 	  "newtab": "index.html"
