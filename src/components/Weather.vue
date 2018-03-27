@@ -92,13 +92,7 @@ export default {
 }
 
 .weather-show-large {
-	position: absolute;
-	transform-origin: inherit;;
-	width: auto;
-	white-space: nowrap;
-	max-width: 75em;
-	overflow: hidden;
-	right: 0;
+	transform-origin: inherit;
 }
 
 .weather-loaded-enter-active, .weather-loaded-leave-active {

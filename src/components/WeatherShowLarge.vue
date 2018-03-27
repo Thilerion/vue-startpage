@@ -5,8 +5,8 @@
 		<div class="day-container">
 			<SpWeatherIcon :name="day.icon" class="day-icon" />
 			<div class="day-temps">
-				<div class="day-temp-high">{{day.temperatureHigh | round}}&deg;C</div>
-				<div class="day-temp-low">{{day.temperatureLow | round}}&deg;C</div>
+				<span class="day-temp-high">{{day.temperatureHigh | round}}&deg;C</span>
+				<span class="day-temp-low">{{day.temperatureLow | round}}&deg;C</span>
 			</div>			
 		</div>
 		
@@ -46,20 +46,25 @@ export default {
 <style>
 .day-container {
 	display: flex;
+	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	margin-top: 6px;
+	margin-top: 0.5em;
 }
 
 .day-icon {
-	font-size: 2em;
+	font-size: 2.25em;
 	padding: 0.25em 0;
 	line-height: 0.5;
 }
 
 .day-temps {
 	text-align: left;
-	margin-left: 0.5em;
+	margin-top: 0.5em;
+}
+
+.day-temps > span {
+	margin: 0 0.25em;
 }
 
 .day-temp-low {
@@ -67,16 +72,25 @@ export default {
 }
 
 .weather-show-large {
+	position: absolute;
+	right: 0;
 	border: 2px solid white;
 	background-color: rgba(0,0,0,0.5);
 	border-radius: 10px;
-	padding: 8px;
+	padding: 0.75em 0.25em;
 	text-align: center;
-	display: flex;
+	display: grid;
+	width: auto;
+	grid-template-columns: repeat(4, 1fr);
+	grid-auto-rows: 1fr;
+	grid-row-gap: 1.5em;
+	grid-column-gap: 0.75em;
+	padding: 1em;
 	font-size: 75%;
 }
 
 .day-weather {
-	min-width: 8em;
+	min-width: 5em;
+	flex: 1 0 7em;
 }
 </style>
