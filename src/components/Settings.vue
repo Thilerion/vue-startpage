@@ -62,17 +62,22 @@
 				<table class="quick-link-table">
 					<tbody>
 						<tr v-for="(fav, index) in favorites" :key="index">
-							<td class="quick-link-title">{{fav.title}}</td>
+							<td class="quick-link-item">
+								<div class="quick-link-title">{{fav.title}}</div>
+								<div class="quick-link-url">{{fav.url}}</div>
+							</td>
 							<td class="quick-link-right"><button @click="deleteQuickLink(index)">Delete</button></td>
 						</tr>
 					</tbody>					
 				</table>
-				<div class="add-link" v-show="favoritesLength < 10">
-					<p>Add new link:</p>
-					<input type="text" placeholder="Site title" v-model="addLinkTitle">
-					<input type="text" placeholder="http://www.site.name.com" v-model="addLinkUrl">
-					<button @click="addNewQuickLink">Add</button>
-				</div>
+				<transition name="fade-form-group">
+					<div class="add-link form-group" v-show="favoritesLength < 10">
+						<p>Add new link:</p>
+						<input type="text" placeholder="Site title" v-model="addLinkTitle">
+						<input type="text" placeholder="http://www.site.name.com" v-model="addLinkUrl">
+						<button @click="addNewQuickLink">Add</button>
+					</div>
+				</transition>
 			</div>
 
 			<div class="settings-footer">
@@ -155,9 +160,24 @@ export default {
 	text-align: right;
 }
 
+.quick-link-url {
+	font-style:italic;
+	font-size: 0.8em;
+}
+
 .quick-link-table tr {
 	border-bottom: 1px solid white;
 	border-top: 1px solid white;
+}
+
+.add-link input[type="text"] {
+	display: block;
+	margin-bottom: 1em;
+	width: 20em;
+}
+
+.add-link {
+	max-height: 20em;
 }
 
 .settings-overlay {
@@ -211,7 +231,7 @@ export default {
 
 .settings-quick-links {
 	grid-column: 2;
-	grid-row: 2;
+	grid-row: 2 / span 2;
 }
 
 .settings-text-small {
@@ -249,7 +269,7 @@ export default {
 	vertical-align: middle;
 }
 
-button.save-settings {
+button.save-settings, .add-link button {
 	border: 1px solid white;
 	border-radius: 5px;
 	padding: 0.6em 1em;
@@ -257,7 +277,7 @@ button.save-settings {
 	transition: all .2s ease;
 }
 
-button.save-settings:hover {
+button.save-settings:hover, .add-link button:hover {
 	color: #333;
 	background-color: white;
 }
@@ -287,5 +307,15 @@ button.save-settings:hover {
 
 .fade-settings-leave-to {
 	transform: scale(0.8);
+}
+
+.fade-form-group-enter-active {
+	transition: all .2s ease;
+	transform-origin: top center;
+}
+
+.fade-form-group-enter, .fade-form-group-leave-to {
+	opacity: 0;
+	transform: scaleY(0.1);
 }
 </style>
