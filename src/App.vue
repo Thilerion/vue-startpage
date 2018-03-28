@@ -3,11 +3,11 @@
     <!--<img src="./assets/logo.png">-->
 	<SpBackground/>
 	<div class="grid">
-		<div class="h-center v-center time-welcome">
+		<div class="h-center wide v-center time-welcome">
 			<SpTime v-if="componentsEnabled.time"/>
 			<SpWelcome v-if="componentsEnabled.welcome"/>
 		</div>
-		<div class="h-center v-bottom">
+		<div class="h-center wide v-bottom">
 			<SpTopSites v-if="componentsEnabled.topSites"/>
 		</div>
 		<div class="h-center v-top">
@@ -112,8 +112,12 @@ button {
 }
 
 .h-center {
-	grid-column: 1 / span 3;
+	grid-column: 2;
 	text-align: center;
+}
+
+.h-center.wide {
+	grid-column: 1 / span 3;
 }
 
 .v-center {
