@@ -43,7 +43,7 @@ export default {
 	background-repeat: no-repeat;
 	background-size: cover;
 	filter: brightness(85%) contrast(90%);
-	transform: scale(1.05);
+	transform: scale(1.07);
 }
 
 .background::after {
@@ -57,6 +57,7 @@ export default {
 
 .show-bg-enter-active, .show-bg-leave-active {
 	transition: opacity .4s ease, transform .6s ease;
+	transition-delay: 1ms;
 }
 
 .show-bg-enter, .show-bg-leave-to {
