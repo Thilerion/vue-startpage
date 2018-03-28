@@ -25,8 +25,8 @@
 </template>
 
 <script>
-import WeatherShowSmall from './WeatherShowSmall';
-import WeatherShowLarge from './WeatherShowLarge';
+import WeatherShowSmall from './weather/WeatherShowSmall';
+import WeatherShowLarge from './weather/WeatherShowLarge';
 
 export default {
 	components: {
