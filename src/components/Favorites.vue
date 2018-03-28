@@ -16,7 +16,7 @@ export default {
 		}
 	},
 	beforeCreate() {
-		this.$store.dispatch('loadTopSites');
+		this.$store.dispatch('loadFavorites');
 	}
 }
 </script>

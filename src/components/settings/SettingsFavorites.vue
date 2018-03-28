@@ -42,10 +42,10 @@ export default {
 	methods: {
 		addNewQuickLink() {
 			if (this.addLinkTitle === "" || this.addLinkUrl === "") return;
-			this.$store.commit('addFavorite', {title: this.addLinkTitle, url: this.addLinkUrl});
+			this.$store.dispatch('addFavorite', {title: this.addLinkTitle, url: this.addLinkUrl});
 		},
 		deleteQuickLink(n) {
-			this.$store.commit('removeFavorite', n);
+			this.$store.dispatch('removeFavorite', n);
 		}
 	}
 }

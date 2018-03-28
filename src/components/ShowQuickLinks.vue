@@ -49,7 +49,7 @@ export default {
 
 .site-link {
 	color: white;
-	transition: color .4s ease, background .3s ease, text-shadow .4s ease;
+	transition: all .2s ease;
 	border-radius: 0.75em;
 	padding: 0.25em 1em;
 	text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
