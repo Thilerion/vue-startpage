@@ -14,9 +14,6 @@ export default {
 		favorites() {
 			return this.$store.getters.favorites;
 		}
-	},
-	beforeCreate() {
-		this.$store.dispatch('loadFavorites');
 	}
 }
 </script>
