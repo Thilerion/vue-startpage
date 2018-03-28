@@ -2,7 +2,7 @@ export default {
 	state: {
 		favorites: [
 			{
-				"title": "Blackboard – Blackboard Learn",
+				"title": "Blackboard – Black",
 				"url": "http://blackboard.leidenuniv.nl/webapps/portal/frameset.jsp"
 			},
 			{
@@ -10,7 +10,7 @@ export default {
 				"url": "http://blackboard.leidenuniv.nl/webapps/portal/frameset.jsp"
 			},
 			{
-				"title": "Blackboard – Blackboard Learn",
+				"title": "Blackboard – Blackboard Lea",
 				"url": "http://blackboard.leidenuniv.nl/webapps/portal/frameset.jsp"
 			}
 		]

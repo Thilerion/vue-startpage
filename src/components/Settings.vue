@@ -57,13 +57,22 @@
 				</div>
 			</div>
 
-			<div class="settings-group settings-quick-links aligned">
+			<div class="settings-group settings-quick-links">
 				<h3 class="settings-group-header">Quick Links <small class="settings-text-small">{{favoritesLength}}/10 quick links</small></h3>				
-				<table>
-					<tr v-for="(fav, index) in favorites" :key="index">
-					{{fav.title}}</tr>
-					<tr>Add:</tr>
+				<table class="quick-link-table">
+					<tbody>
+						<tr v-for="(fav, index) in favorites" :key="index">
+							<td class="quick-link-title">{{fav.title}}</td>
+							<td class="quick-link-right"><button @click="deleteQuickLink(index)">Delete</button></td>
+						</tr>
+					</tbody>					
 				</table>
+				<div class="add-link" v-show="favoritesLength < 10">
+					<p>Add new link:</p>
+					<input type="text" placeholder="Site title" v-model="addLinkTitle">
+					<input type="text" placeholder="http://www.site.name.com" v-model="addLinkUrl">
+					<button @click="addNewQuickLink">Add</button>
+				</div>
 			</div>
 
 			<div class="settings-footer">
@@ -80,7 +89,9 @@ export default {
 		return {
 			username: null,
 			componentsEnabled: {},
-			currentUnsplashCollection: null
+			currentUnsplashCollection: null,
+			addLinkTitle: "",
+			addLinkUrl: ""
 		}
 	},
 	computed: {
@@ -112,6 +123,12 @@ export default {
 		saveSettingsAndClose() {
 			this.saveSettings();
 			this.toggleSettingsOverlay();
+		},
+		addNewQuickLink() {
+			this.$store.commit('addFavorite', {title: this.addLinkTitle, url: this.addLinkUrl});
+		},
+		deleteQuickLink(n) {
+			this.$store.commit('removeFavorite', n);
 		}
 	},
 	beforeMount() {
@@ -123,6 +140,25 @@ export default {
 </script>
 
 <style>
+.quick-link-table, .quick-link-table tr, .quick-link-table td {
+	padding: 0.25em 0.5em;
+	border-collapse: collapse;
+	line-height: 1.5;
+}
+
+.quick-link-table {
+	width: 100%;
+}
+
+.quick-link-right {
+	text-align: right;
+}
+
+.quick-link-table tr {
+	border-bottom: 1px solid white;
+	border-top: 1px solid white;
+}
+
 .settings-overlay {
 	position: fixed;
 	top: 0; bottom: 0;
