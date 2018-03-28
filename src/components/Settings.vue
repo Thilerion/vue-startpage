@@ -34,6 +34,10 @@
 					<input type="checkbox" name="setting-top-sites" id="setting-top-sites" v-model="componentsEnabled.topSites">
 				</div>
 				<div class="form-group">
+					<label for="setting-favorites">Quick Links</label>
+					<input type="checkbox" name="setting-favorites" id="setting-favorites" v-model="componentsEnabled.favorites">
+				</div>
+				<div class="form-group">
 					<label for="setting-time">Time</label>
 					<input type="checkbox" name="setting-time" id="setting-time" v-model="componentsEnabled.time">
 				</div>
