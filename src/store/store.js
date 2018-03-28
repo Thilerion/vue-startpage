@@ -24,7 +24,7 @@ export const store = new Vuex.Store({
 	state: {
 		username: null,
 		componentsEnabled: {
-			linkComponent: null,
+			linkComponent: "",
 			time: true,
 			welcome: true,
 			weather: true,
