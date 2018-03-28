@@ -10,7 +10,9 @@
 		</button>
 
 		<div class="settings-inner">
+
 			<h2 class="h2-settings">Settings</h2>
+
 			<div class="settings-group">
 				<h3 class="settings-group-header">General</h3>
 				<div class="form-group">
@@ -55,7 +57,9 @@
 				</div>
 			</div>
 
-			<button class="save-settings" @click="saveSettingsAndClose">Save settings</button>
+			<div class="settings-footer">
+				<button class="save-settings" @click="saveSettingsAndClose">Save settings</button>
+			</div>			
 		</div>
 	</div>
 </transition>
@@ -125,16 +129,32 @@ export default {
 }
 
 .settings-inner {
-	width: 50%;
+	border: 1px solid red;	
 	margin: auto;
-	padding: 12px;
+	padding: 1em 2em;
 	min-height: 20vh;
+	width: 80%;
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-auto-rows: auto;
+	grid-gap: 1em;
 }
 
 .h2-settings {
 	font-size: 1.8em;
 	margin: 0;
 	text-align: center;
+	grid-row: 1;
+	grid-column: 1 / span 2;
+}
+
+.settings-footer {
+	grid-column: 1 / span 2;
+	text-align: center;
+}
+
+.settings-components {
+	grid-column: 1;
 }
 
 .form-group {
