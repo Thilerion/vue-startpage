@@ -5,6 +5,7 @@
 		<label for="setting-top-sites">Most visited websites</label>
 		<input type="checkbox" name="setting-top-sites" id="setting-top-sites" v-model="componentsEnabled.topSites">
 	</div>
+	<span class="setting-or">or</span>
 	<div class="form-group">
 		<label for="setting-favorites">Quick Links</label>
 		<input type="checkbox" name="setting-favorites" id="setting-favorites" v-model="componentsEnabled.favorites">
@@ -51,5 +52,10 @@ export default {
 </script>
 
 <style>
-
+.setting-or {
+	font-style: italic;
+	font-size: 0.75em;
+	opacity: 0.6;
+	line-height: 1;
+}
 </style>
