@@ -45,6 +45,10 @@
 					<label for="setting-weather">Weather</label>
 					<input type="checkbox" name="setting-weather" id="setting-weather" v-model="componentsEnabled.weather">
 				</div>
+				<div class="form-group">
+					<label for="setting-news">News</label>
+					<input type="checkbox" name="setting-news" id="setting-news" v-model="componentsEnabled.news">
+				</div>
 			</div>
 
 			<button class="save-settings" @click="saveSettingsAndClose">Save settings</button>
