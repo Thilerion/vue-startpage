@@ -200,8 +200,7 @@ export default {
 	transform: scale(1.07);
 }
 
-.settings-inner {
-	border: 1px solid red;	
+.settings-inner {	
 	margin: auto;
 	padding: 1em 2em;
 	min-height: 20vh;
