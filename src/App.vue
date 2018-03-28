@@ -14,6 +14,7 @@
 		</div>
 		<div class="h-center v-top">
 			<SpNews v-if="componentsEnabled.news" />
+			<SpQuote />
 		</div>
 		<div class="v-top h-right">
 			<SpWeather v-if="componentsEnabled.weather" class="weather-widget" />
@@ -36,6 +37,7 @@ import SettingsButton from './components/SettingsButton'
 import Settings from './components/Settings'
 import News from './components/News'
 import Favorites from './components/Favorites'
+import Quote from './components/Quote'
 
 export default {
 	components: {
@@ -47,7 +49,8 @@ export default {
 		SpSettingsButton: SettingsButton,
 		SpSettings: Settings,
 		SpNews: News,
-		SpFavorites: Favorites
+		SpFavorites: Favorites,
+		SpQuote: Quote
 	},
 	computed: {
 		componentsEnabled() {
