@@ -57,6 +57,7 @@ export default {
 	width: 2em;
 	align-self: center;
 	padding: 0.5em 0;
+	filter: drop-shadow(0 0 1em rgba(0,0,0,0.1)) brightness(105%);
 }
 
 .site-link {
@@ -64,7 +65,7 @@ export default {
 	transition: color .4s ease, background .3s ease, text-shadow .4s ease;
 	border-radius: 0.75em;
 	padding: 0.25em 1em;
-	text-shadow: 1px 1px 3px rgba(0,0,0,0.4);
+	text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
 }
 
 .site-link:hover {
