@@ -1,14 +1,20 @@
 <template>
 <div class="widgets-settings">
 	<h3 class="settings-group-header">Widgets</h3>
-	<div class="form-group">
-		<label for="setting-top-sites">Most visited websites</label>
-		<input type="checkbox" name="setting-top-sites" id="setting-top-sites" v-model="componentsEnabled.topSites">
-	</div>
-	<span class="setting-or">or</span>
-	<div class="form-group">
-		<label for="setting-favorites">Quick Links</label>
-		<input type="checkbox" name="setting-favorites" id="setting-favorites" v-model="componentsEnabled.favorites">
+	<div class="form-group radio-group">
+		<label for="setting-links">Quick links</label>
+		<div class="radio-group-single">
+			<label for="setting-top-sites">Most visited websites</label>
+			<input type="radio" name="setting-links" id="setting-top-sites" value="SpTopSites" v-model="componentsEnabled.linkComponent">
+		</div>
+		<div class="radio-group-single">
+			<label for="setting-favorites">Custom favorites</label>
+			<input type="radio" name="setting-links" id="setting-favorites" value="SpFavorites" v-model="componentsEnabled.linkComponent">
+		</div>
+		<div class="radio-group-single">
+			<label for="setting-favorites">None</label>
+			<input type="radio" name="setting-links" id="setting-favorites" value="" v-model="componentsEnabled.linkComponent">
+		</div>	
 	</div>
 	<div class="form-group">
 		<label for="setting-time">Time</label>
@@ -31,24 +37,26 @@
 
 <script>
 export default {
-	props: ['saveOnClose'],
+	props: ["saveOnClose"],
 	data() {
 		return {
 			componentsEnabled: {}
-		}
+		};
 	},
 	methods: {
 		save() {
-			this.$store.dispatch("saveSettings", {componentsEnabled: this.componentsEnabled});
+			this.$store.dispatch("saveSettings", {
+				componentsEnabled: this.componentsEnabled
+			});
 		}
 	},
-	beforeMount() {		
+	beforeMount() {
 		this.componentsEnabled = this.$store.getters.componentsEnabled;
 	},
 	beforeDestroy() {
 		if (this.saveOnClose === true) this.save();
 	}
-}
+};
 </script>
 
 <style>

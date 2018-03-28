@@ -24,8 +24,7 @@ export const store = new Vuex.Store({
 	state: {
 		username: null,
 		componentsEnabled: {
-			topSites: true,
-			favorites: true,
+			linkComponent: null,
 			time: true,
 			welcome: true,
 			weather: true,

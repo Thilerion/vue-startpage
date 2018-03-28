@@ -8,8 +8,9 @@
 			<SpWelcome v-if="componentsEnabled.welcome"/>
 		</div>
 		<div class="h-center wide v-bottom">
-			<SpTopSites v-if="componentsEnabled.topSites"/>
-			<SpFavorites v-if="componentsEnabled.favorites"/>
+			<component :is="componentsEnabled.linkComponent" />
+			<!--<SpTopSites v-if="componentsEnabled.topSites"/>
+			<SpFavorites v-if="componentsEnabled.favorites"/>-->
 		</div>
 		<div class="h-center v-top">
 			<SpNews v-if="componentsEnabled.news" />

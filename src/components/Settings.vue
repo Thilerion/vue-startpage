@@ -173,6 +173,11 @@ export default {
 	color: #333;
 }
 
+.radio-group-single {
+	font-size: 0.9em;
+	padding-left: 1em;
+}
+
 .settings-group.aligned label {
 	display: inline-block;
 	min-width: 10em;
