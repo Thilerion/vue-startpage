@@ -14,7 +14,7 @@
 		</div>
 		<div class="h-center v-top">
 			<SpNews v-if="componentsEnabled.news" />
-			<SpQuote />
+			<SpQuote v-if="componentsEnabled.quote" />
 		</div>
 		<div class="v-top h-right">
 			<SpWeather v-if="componentsEnabled.weather" class="weather-widget" />

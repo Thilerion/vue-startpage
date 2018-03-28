@@ -29,6 +29,7 @@ export default {
 <style>
 .quote-wrapper {
 	display: inline-block;
+	max-width: 50em;
 }
 
 .quote-wrapper:not(:first-of-type) {

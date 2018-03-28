@@ -28,7 +28,8 @@ export const store = new Vuex.Store({
 			time: true,
 			welcome: true,
 			weather: true,
-			news: true
+			news: true,
+			quote: true
 		},
 		settingsOpen: false
 	},

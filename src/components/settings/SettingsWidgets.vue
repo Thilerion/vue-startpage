@@ -32,6 +32,10 @@
 		<label for="setting-news">News</label>
 		<input type="checkbox" name="setting-news" id="setting-news" v-model="componentsEnabled.news">
 	</div>
+	<div class="form-group">
+		<label for="setting-quote">Quote</label>
+		<input type="checkbox" name="setting-quote" id="setting-quote" v-model="componentsEnabled.quote">
+	</div>
 </div>
 </template>
 
