@@ -21,8 +21,6 @@
 			</svg>
 		</button>		
 	</div>
-	<button @click="start">Start</button>
-	<button @click="stop">Stop</button>
 </div>
 </template>
 
