@@ -44,13 +44,13 @@ export default {
 
 .weather-small-container .top {
 	display: flex;
-	justify-content: space-between;
+	justify-content: center;
 	font-size: 2em;
 	line-height: 0.95;
 }
 
 .weather-icon {
-	padding: 0 8px 0 0;
+	padding: 0 0.75em 0 0;
 }
 
 .weather-summary {
