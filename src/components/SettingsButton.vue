@@ -19,8 +19,8 @@ export default {
 
 <style>
 .settings-icon {
-	width: 24px;
-	height: 24px;
+	width: 1.5em;
+	height: 1.5em;
 }
 
 svg {
@@ -28,8 +28,8 @@ svg {
 }
 
 .settings-button {
-	width: 24px;
-	height: 24px;
+	width: 1.5em;
+	height: 1.5em;
 	opacity: 0.8;
 	transition: opacity 0.3s ease;
 	position: absolute;
