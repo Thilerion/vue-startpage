@@ -1,6 +1,6 @@
 <template>
 <ul class="site-list">
-	<li class="site-item" v-for="site in links" :key="site.title">
+	<li class="site-item" v-for="(site, index) in links" :key="index">
 		<a class="site-link" :href="site.url">
 			<img class="site-icon" :src="siteUrlFavicon(site.url)" :alt="site.title">
 			<span class="site-link-text">{{site.title}}</span>

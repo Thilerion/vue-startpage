@@ -4,11 +4,20 @@ export default {
 			{
 				"title": "Blackboard – Blackboard Learn",
 				"url": "http://blackboard.leidenuniv.nl/webapps/portal/frameset.jsp"
+			},
+			{
+				"title": "Blackboard – Blackboard Learn",
+				"url": "http://blackboard.leidenuniv.nl/webapps/portal/frameset.jsp"
+			},
+			{
+				"title": "Blackboard – Blackboard Learn",
+				"url": "http://blackboard.leidenuniv.nl/webapps/portal/frameset.jsp"
 			}
 		]
 	},
 	getters: {
-		favorites: state => state.favorites
+		favorites: state => state.favorites,
+		favoritesAmount: state => state.favorites.length
 	},
 	mutations: {
 		setFavorites: (state, favArr) => state.favorites = favArr,

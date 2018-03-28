@@ -29,7 +29,7 @@
 				</div>
 			</div>
 
-			<div class="settings-group settings-components">
+			<div class="settings-group settings-components aligned">
 				<h3 class="settings-group-header">Widgets</h3>
 				<div class="form-group">
 					<label for="setting-top-sites">Most visited websites</label>
@@ -57,6 +57,15 @@
 				</div>
 			</div>
 
+			<div class="settings-group settings-quick-links aligned">
+				<h3 class="settings-group-header">Quick Links <small class="settings-text-small">{{favoritesLength}}/10 quick links</small></h3>				
+				<table>
+					<tr v-for="(fav, index) in favorites" :key="index">
+					{{fav.title}}</tr>
+					<tr>Add:</tr>
+				</table>
+			</div>
+
 			<div class="settings-footer">
 				<button class="save-settings" @click="saveSettingsAndClose">Save settings</button>
 			</div>			
@@ -80,6 +89,12 @@ export default {
 		},
 		possibleUnsplashCollections() {
 			return this.$store.getters.possibleUnsplashCollections;
+		},
+		favoritesLength() {
+			return this.$store.getters.favoritesAmount;
+		},
+		favorites() {
+			return this.$store.getters.favorites;
 		}
 	},
 	methods: {
@@ -157,6 +172,18 @@ export default {
 	grid-column: 1;
 }
 
+.settings-quick-links {
+	grid-column: 2;
+	grid-row: 2;
+}
+
+.settings-text-small {
+	opacity: 0.7;
+	font-size: 0.75rem;
+	font-weight: normal;
+	padding-left: 1em;
+}
+
 .form-group {
 	margin: 1em 0;
 }
@@ -173,14 +200,14 @@ export default {
 	color: #333;
 }
 
-.settings-components label {
+.settings-group.aligned label {
 	display: inline-block;
 	min-width: 10em;
 	width: 40%;
 	max-width: 20em;
 }
 
-.settings-components input {
+.settings-group.aligned input {
 	margin: 0 1em;
 	vertical-align: middle;
 }
