@@ -4,16 +4,12 @@ export default {
 	state: {
 		favorites: [
 			{
-				"title": "Blackboard – Black",
-				"url": "http://blackboard.leidenuniv.nl/webapps/portal/frameset.jsp"
+				"title": "nu.nl",
+				"url": "https://www.nu.nl"
 			},
 			{
-				"title": "Blackboard – Blackboard Learn",
-				"url": "http://blackboard.leidenuniv.nl/webapps/portal/frameset.jsp"
-			},
-			{
-				"title": "Blackboard – Blackboard Lea",
-				"url": "http://blackboard.leidenuniv.nl/webapps/portal/frameset.jsp"
+				"title": "YouTube",
+				"url": "https://www.youtube.com"
 			}
 		]
 	},
