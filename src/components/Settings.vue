@@ -125,6 +125,7 @@ export default {
 			this.toggleSettingsOverlay();
 		},
 		addNewQuickLink() {
+			if (this.addLinkTitle === "" || this.addLinkUrl === "") return;
 			this.$store.commit('addFavorite', {title: this.addLinkTitle, url: this.addLinkUrl});
 		},
 		deleteQuickLink(n) {
