@@ -13,72 +13,11 @@
 
 			<h2 class="h2-settings">Settings</h2>
 
-			<div class="settings-group">
-				<h3 class="settings-group-header">General</h3>
-				<div class="form-group">
-					<label for="username">Name</label>
-					<input type="text" name="username" id="username" v-model="username">
-				</div>
-				<div class="form-group">
-					<label for="bg-image">Background image collection</label>
-					<select name="bg-image" v-model="currentUnsplashCollection">
-						<option v-for="(col, index) in possibleUnsplashCollections" :value="index" :key="index">
-							{{col.name}}
-						</option>
-					</select>
-				</div>
-			</div>
+			<SpSettingsGeneral :saveOnClose="saveOnClose" class="settings-group"/>
 
-			<div class="settings-group settings-components aligned">
-				<h3 class="settings-group-header">Widgets</h3>
-				<div class="form-group">
-					<label for="setting-top-sites">Most visited websites</label>
-					<input type="checkbox" name="setting-top-sites" id="setting-top-sites" v-model="componentsEnabled.topSites">
-				</div>
-				<div class="form-group">
-					<label for="setting-favorites">Quick Links</label>
-					<input type="checkbox" name="setting-favorites" id="setting-favorites" v-model="componentsEnabled.favorites">
-				</div>
-				<div class="form-group">
-					<label for="setting-time">Time</label>
-					<input type="checkbox" name="setting-time" id="setting-time" v-model="componentsEnabled.time">
-				</div>
-				<div class="form-group">
-					<label for="setting-welcome">Greeting</label>
-					<input type="checkbox" name="setting-welcome" id="setting-welcome" v-model="componentsEnabled.welcome">
-				</div>
-				<div class="form-group">
-					<label for="setting-weather">Weather</label>
-					<input type="checkbox" name="setting-weather" id="setting-weather" v-model="componentsEnabled.weather">
-				</div>
-				<div class="form-group">
-					<label for="setting-news">News</label>
-					<input type="checkbox" name="setting-news" id="setting-news" v-model="componentsEnabled.news">
-				</div>
-			</div>
+			<SpSettingsWidgets :saveOnClose="saveOnClose" class="settings-group settings-components aligned"/>
 
-			<div class="settings-group settings-quick-links">
-				<h3 class="settings-group-header">Quick Links <small class="settings-text-small">{{favoritesLength}}/10 quick links</small></h3>				
-				<table class="quick-link-table">
-					<tbody>
-						<tr v-for="(fav, index) in favorites" :key="index">
-							<td class="quick-link-item">
-								<div class="quick-link-title">{{fav.title}}</div>
-								<div class="quick-link-url">{{fav.url}}</div>
-							</td>
-							<td class="quick-link-right"><button @click="deleteQuickLink(index)">Delete</button></td>
-						</tr>
-					</tbody>					
-				</table>
-				<transition name="fade-form-group">
-					<div class="add-link form-group" v-show="favoritesLength < 10">
-						<p>Add new link:</p>
-						<input type="text" placeholder="Site title" v-model="addLinkTitle">
-						<input type="text" placeholder="http://www.site.name.com" v-model="addLinkUrl">
-						<button @click="addNewQuickLink">Add</button>
-					</div>
-				</transition>
-			</div>
+			<SpSettingsFavorites class="settings-group settings-quick-links" />
 
 			<div class="settings-footer">
 				<button class="save-settings" @click="saveSettingsAndClose">Save settings</button>
@@ -89,58 +28,36 @@
 </template>
 
 <script>
+import SettingsGeneral from './settings/SettingsGeneral'
+import SettingsWidgets from './settings/SettingsWidgets'
+import SettingsFavorites from './settings/SettingsFavorites'
 export default {
+	components: {
+		SpSettingsGeneral: SettingsGeneral,
+		SpSettingsWidgets: SettingsWidgets,
+		SpSettingsFavorites: SettingsFavorites
+	},
 	data() {
 		return {
-			username: null,
-			componentsEnabled: {},
-			currentUnsplashCollection: null,
-			addLinkTitle: "",
-			addLinkUrl: ""
+			saveOnClose: false
 		}
 	},
 	computed: {
 		backgroundUrl() {
 			return this.$store.getters.backgroundUrl;
-		},
-		possibleUnsplashCollections() {
-			return this.$store.getters.possibleUnsplashCollections;
-		},
-		favoritesLength() {
-			return this.$store.getters.favoritesAmount;
-		},
-		favorites() {
-			return this.$store.getters.favorites;
 		}
 	},
 	methods: {
 		toggleSettingsOverlay() {
 			this.$store.commit("toggleSettingsOverlay");
 		},
-		saveSettings() {
-			let updatedSettings = {
-				username: this.username,
-				componentsEnabled: this.componentsEnabled
-			};
-			this.$store.dispatch("saveSettings", updatedSettings);
-			this.$store.dispatch("saveBackgroundSettings", this.currentUnsplashCollection);
-		},
 		saveSettingsAndClose() {
-			this.saveSettings();
-			this.toggleSettingsOverlay();
-		},
-		addNewQuickLink() {
-			if (this.addLinkTitle === "" || this.addLinkUrl === "") return;
-			this.$store.commit('addFavorite', {title: this.addLinkTitle, url: this.addLinkUrl});
-		},
-		deleteQuickLink(n) {
-			this.$store.commit('removeFavorite', n);
+			this.saveOnClose = true;
+			//setTimeout is necessary to allow the saveOnClose prop to update in the child components
+			setTimeout(() => {
+				this.toggleSettingsOverlay();
+			}, 0);			
 		}
-	},
-	beforeMount() {
-		this.username = this.$store.getters.username;
-		this.currentUnsplashCollection = this.$store.getters.currentUnsplashCollection;
-		this.componentsEnabled = this.$store.getters.componentsEnabled;
 	}
 }
 </script>

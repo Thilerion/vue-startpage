@@ -47,9 +47,13 @@ export const store = new Vuex.Store({
 		disableWeatherComponent: state => state.componentsEnabled.weather = false
 	},
 	actions: {
-		saveSettings: ({ state, commit }, updated) => {
-			commit('setUsername', updated.username);
-			commit('setComponentsEnabled', updated.componentsEnabled);
+		saveSettings: ({ state, commit }, {username, componentsEnabled}) => {
+			if (username) {
+				commit('setUsername', username);
+			}
+			if (componentsEnabled) {
+				commit('setComponentsEnabled', componentsEnabled);
+			}			
 			saveToStorage("username", state.username);
 			saveToStorage("componentsEnabled", JSON.stringify(state.componentsEnabled));
 		},
