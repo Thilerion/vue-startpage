@@ -83,6 +83,9 @@ export default {
 	beforeDestroy() {
 		this.stop();
 	},
+	mounted() {
+		if (this.itemArrayLength > 0) this.start();
+	},
 	watch: {
 		itemArrayLength(newVal, oldVal) {
 			if (newVal > 0) this.start();
