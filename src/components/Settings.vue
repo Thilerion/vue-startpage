@@ -20,15 +20,17 @@
 			</ul>
 
 			<div class="settings-tab-content">
-				<div class="tab-general" v-if="currentTab === 'general'">
-					<SpSettingsGeneral :saveOnClose="saveOnClose" class="settings-group"/>
-				</div>
+				<transition name="switch-tab" mode="out-in">
+					<div class="tab-general" v-if="currentTab === 'general'" key="general">
+						<SpSettingsGeneral :saveOnClose="saveOnClose" class="settings-group"/>
+					</div>
 
-				<div class="tab-custom-favorites" v-if="currentTab === 'customFavorites'">
-					<SpSettingsWidgets :saveOnClose="saveOnClose" class="settings-group settings-components aligned"/>
+					<div class="tab-custom-favorites" v-else-if="currentTab === 'customFavorites'" key="customFavorites">
+						<SpSettingsWidgets :saveOnClose="saveOnClose" class="settings-group settings-components aligned"/>
 
-					<SpSettingsFavorites class="settings-group settings-quick-links" />
-				</div>
+						<SpSettingsFavorites class="settings-group settings-quick-links" />
+					</div>
+				</transition>
 			</div>			
 
 			<div class="settings-footer">
@@ -246,9 +248,15 @@ h2 {
 	transform: scale(0.8);
 }
 
+.switch-tab-enter-active, .switch-tab-leave-active {
+	transition: all .2s ease;
+	transform-origin: 30% 20%;
+}
 
-
-
+.switch-tab-enter, .switch-tab-leave-to {
+	opacity: 0;
+	transform: scale(0.95);
+}
 
 
 
