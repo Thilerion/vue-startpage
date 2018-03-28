@@ -59,11 +59,6 @@ export default {
 };
 </script>
 
-<style>
-.setting-or {
-	font-style: italic;
-	font-size: 0.75em;
-	opacity: 0.6;
-	line-height: 1;
-}
+<style scoped>
+
 </style>

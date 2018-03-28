@@ -13,11 +13,23 @@
 
 			<h2 class="h2-settings">Settings</h2>
 
-			<SpSettingsGeneral :saveOnClose="saveOnClose" class="settings-group"/>
+			<ul class="tabs">
+				<li v-for="tab in tabs" :key="tab.tabId" :class="{'tab-selected': tab.tabId === currentTab}" class="tab-item">
+					<a href="#" @click="goToTab(tab.tabId)">{{tab.name}}</a>
+				</li>
+			</ul>
 
-			<SpSettingsWidgets :saveOnClose="saveOnClose" class="settings-group settings-components aligned"/>
+			<div class="settings-tab-content">
+				<div class="tab-general" v-if="currentTab === 'general'">
+					<SpSettingsGeneral :saveOnClose="saveOnClose" class="settings-group"/>
+				</div>
 
-			<SpSettingsFavorites class="settings-group settings-quick-links" />
+				<div class="tab-custom-favorites" v-if="currentTab === 'customFavorites'">
+					<SpSettingsWidgets :saveOnClose="saveOnClose" class="settings-group settings-components aligned"/>
+
+					<SpSettingsFavorites class="settings-group settings-quick-links" />
+				</div>
+			</div>			
 
 			<div class="settings-footer">
 				<button class="save-settings" @click="saveSettingsAndClose">Save settings</button>
@@ -39,7 +51,18 @@ export default {
 	},
 	data() {
 		return {
-			saveOnClose: false
+			saveOnClose: false,
+			tabs: [
+				{
+					"tabId": "general",
+					"name": "General"
+				},
+				{
+					"tabId": "customFavorites",
+					"name": "Custom favorites"
+				}
+			],
+			currentTab: "general"
 		}
 	},
 	computed: {
@@ -57,46 +80,15 @@ export default {
 			setTimeout(() => {
 				this.toggleSettingsOverlay();
 			}, 0);			
+		},
+		goToTab(tabId) {
+			this.currentTab = tabId;
 		}
 	}
 }
 </script>
 
 <style>
-.quick-link-table, .quick-link-table tr, .quick-link-table td {
-	padding: 0.25em 0.5em;
-	border-collapse: collapse;
-	line-height: 1.5;
-}
-
-.quick-link-table {
-	width: 100%;
-}
-
-.quick-link-right {
-	text-align: right;
-}
-
-.quick-link-url {
-	font-style:italic;
-	font-size: 0.8em;
-}
-
-.quick-link-table tr {
-	border-bottom: 1px solid white;
-	border-top: 1px solid white;
-}
-
-.add-link input[type="text"] {
-	display: block;
-	margin-bottom: 1em;
-	width: 20em;
-}
-
-.add-link {
-	max-height: 20em;
-}
-
 .settings-overlay {
 	position: fixed;
 	top: 0; bottom: 0;
@@ -117,37 +109,61 @@ export default {
 	transform: scale(1.07);
 }
 
-.settings-inner {	
+.settings-inner {
+	height: 100vh;
+	width: 50%;
 	margin: auto;
-	padding: 1em 2em;
-	min-height: 20vh;
-	width: 80%;
-	display: grid;
-	grid-template-columns: 1fr 1fr;
-	grid-auto-rows: auto;
-	grid-gap: 1em;
+	padding: 0 1em;
+	display: flex;
+	flex-direction: column;
 }
 
-.h2-settings {
-	font-size: 1.8em;
-	margin: 0;
-	text-align: center;
-	grid-row: 1;
-	grid-column: 1 / span 2;
+.settings-tab-content {
+	flex: 1 1 80%;
+	padding-top: 1em;
 }
 
 .settings-footer {
-	grid-column: 1 / span 2;
+	flex: 0 0 6em;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding-bottom: 2.5em;
+}
+
+h2 {
 	text-align: center;
 }
 
-.settings-components {
-	grid-column: 1;
+.tabs {
+	display: inline-flex;
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	border-bottom: 1px solid currentColor;
 }
 
-.settings-quick-links {
-	grid-column: 2;
-	grid-row: 2 / span 2;
+.tab-item a {
+	color: currentColor;
+	text-decoration: none;
+}
+
+.tab-item:not(:first-of-type) {
+	margin-left: 1.5em;
+}
+
+.tab-selected {
+	font-weight: bold;
+	border-bottom: 3px solid currentColor;
+}
+
+.tab-custom-favorites {
+	display: flex;
+	justify-content: space-between;
+}
+
+.tab-custom-favorites > div {
+	flex: 1 1 40%;
 }
 
 .settings-text-small {
@@ -190,17 +206,17 @@ export default {
 	vertical-align: middle;
 }
 
-button.save-settings, .add-link button {
+.save-settings:hover {
+	color: #333;
+	background-color: white;
+}
+
+.save-settings {
 	border: 1px solid white;
 	border-radius: 5px;
 	padding: 0.6em 1em;
 	min-width: 8em;
 	transition: all .2s ease;
-}
-
-button.save-settings:hover, .add-link button:hover {
-	color: #333;
-	background-color: white;
 }
 
 .close-button {
@@ -230,13 +246,32 @@ button.save-settings:hover, .add-link button:hover {
 	transform: scale(0.8);
 }
 
-.fade-form-group-enter-active {
-	transition: all .2s ease;
-	transform-origin: top center;
+
+
+
+
+
+
+
+/*
+
+button.save-settings:hover, .add-link button:hover {
+	color: #333;
+	background-color: white;
 }
 
-.fade-form-group-enter, .fade-form-group-leave-to {
-	opacity: 0;
-	transform: scaleY(0.1);
+.h2-settings {
+	font-size: 1.8em;
+	margin: 0;
+	text-align: center;
+	grid-row: 1;
+	grid-column: 1 / span 2;
 }
+
+.settings-quick-links {
+	grid-column: 2;
+	grid-row: 2 / span 2;
+}
+
+*/
 </style>

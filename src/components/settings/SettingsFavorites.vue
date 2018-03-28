@@ -1,6 +1,6 @@
 <template>
 <div class="favorites-settings">
-	<h3 class="settings-group-header">Quick Links <small class="settings-text-small">{{favoritesLength}}/10 quick links</small></h3>				
+	<h3 class="settings-group-header">Custom favorites <small class="settings-text-small">{{favoritesLength}}/10 quick links</small></h3>				
 	<table class="quick-link-table">
 		<tbody>
 			<tr v-for="(fav, index) in favorites" :key="index">
@@ -52,5 +52,37 @@ export default {
 </script>
 
 <style>
+.quick-link-table, .quick-link-table tr, .quick-link-table td {
+	padding: 0.25em 0.5em;
+	border-collapse: collapse;
+	line-height: 1.5;
+}
 
+.quick-link-table {
+	width: 100%;
+}
+
+.quick-link-right {
+	text-align: right;
+}
+
+.quick-link-url {
+	font-style:italic;
+	font-size: 0.8em;
+}
+
+.quick-link-table tr {
+	border-bottom: 1px solid white;
+	border-top: 1px solid white;
+}
+
+.add-link input[type="text"] {
+	display: block;
+	margin-bottom: 1em;
+	width: 20em;
+}
+
+.add-link {
+	max-height: 20em;
+}
 </style>
