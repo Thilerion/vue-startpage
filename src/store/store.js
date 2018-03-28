@@ -8,6 +8,7 @@ import time from './modules/time';
 import topsites from './modules/topsites';
 import weather from './modules/weather';
 import news from './modules/news';
+import favorites from './modules/favorites'
 
 import { saveToStorage, getFromStorage } from '@/api/localstorage';
 
@@ -16,6 +17,7 @@ export const store = new Vuex.Store({
 		background,
 		time,
 		topsites,
+		favorites,
 		weather,
 		news
 	},
@@ -23,6 +25,7 @@ export const store = new Vuex.Store({
 		username: null,
 		componentsEnabled: {
 			topSites: true,
+			favorites: true,
 			time: true,
 			welcome: true,
 			weather: true,

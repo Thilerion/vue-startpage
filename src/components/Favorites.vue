@@ -1,6 +1,6 @@
 <template>
-<div class="top-sites">
-	<SpShowQuickLinks :links="topSites" />
+<div class="favorites">
+	<SpShowQuickLinks :links="favorites" />
 </div>
 </template>
 
@@ -11,8 +11,8 @@ export default {
 		SpShowQuickLinks: ShowQuickLinks
 	},
 	computed: {
-		topSites() {
-			return this.$store.getters.topSites;
+		favorites() {
+			return this.$store.getters.favorites;
 		}
 	},
 	beforeCreate() {
@@ -22,7 +22,7 @@ export default {
 </script>
 
 <style scoped>
-.top-sites {
+.favorites {
 	display: inline-block;
 }
 </style>

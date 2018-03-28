@@ -9,6 +9,7 @@
 		</div>
 		<div class="h-center wide v-bottom">
 			<SpTopSites v-if="componentsEnabled.topSites"/>
+			<SpFavorites v-else-if="componentsEnabled.favorites"/>
 		</div>
 		<div class="h-center v-top">
 			<SpNews v-if="componentsEnabled.news" />
@@ -33,6 +34,7 @@ import Weather from './components/Weather';
 import SettingsButton from './components/SettingsButton'
 import Settings from './components/Settings'
 import News from './components/News'
+import Favorites from './components/Favorites'
 
 export default {
 	components: {
@@ -43,7 +45,8 @@ export default {
 		SpWeather: Weather,
 		SpSettingsButton: SettingsButton,
 		SpSettings: Settings,
-		SpNews: News
+		SpNews: News,
+		SpFavorites: Favorites
 	},
 	computed: {
 		componentsEnabled() {
