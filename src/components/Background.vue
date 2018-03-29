@@ -42,7 +42,7 @@ export default {
 	background-position: center center;
 	background-repeat: no-repeat;
 	background-size: cover;
-	filter: brightness(85%) contrast(90%);
+	filter: brightness(80%) contrast(90%);
 	transform: scale(1.07);
 }
 
