@@ -13,24 +13,20 @@
 
 			<h2 class="h2-settings">Settings</h2>
 
-			<ul class="tabs">
-				<li v-for="tab in tabs" :key="tab.tabId" :class="{'tab-selected': tab.tabId === currentTab}" class="tab-item">
-					<a href="#" @click="goToTab(tab.tabId)">{{tab.name}}</a>
-				</li>
-			</ul>
+			<div class="tabs">
+				<button
+					v-for="tab in tabs"
+					:key="tab.name"
+					class="tab-item"
+					:class="{'tab-selected': tab.name === currentTab}"
+					@click="currentTab = tab.name"
+				>{{tab.display}}</button>
+			</div>
 
 			<div class="settings-tab-content">
-				<transition name="switch-tab" mode="out-in">
-					<div class="tab-general" v-if="currentTab === 'general'" key="general">
-						<SpSettingsGeneral :saveOnClose="saveOnClose" class="settings-group"/>
-					</div>
-
-					<div class="tab-custom-favorites" v-else-if="currentTab === 'customFavorites'" key="customFavorites">
-						<SpSettingsWidgets :saveOnClose="saveOnClose" class="settings-group settings-components aligned"/>
-
-						<SpSettingsFavorites class="settings-group settings-quick-links" />
-					</div>
-				</transition>
+				<keep-alive>
+					<component :is="currentTab"/>
+				</keep-alive>
 			</div>			
 
 			<div class="settings-footer">
@@ -53,18 +49,21 @@ export default {
 	},
 	data() {
 		return {
-			saveOnClose: false,
 			tabs: [
 				{
-					"tabId": "general",
-					"name": "General"
+					"name": "SpSettingsGeneral",
+					"display": "General"
 				},
 				{
-					"tabId": "customFavorites",
-					"name": "Custom favorites"
-				}
+					"name": "SpSettingsWidgets",
+					"display": "Widgets"
+				},
+				{
+					"name": "SpSettingsFavorites",
+					"display": "Custom favorites"
+				},
 			],
-			currentTab: "general"
+			currentTab: "SpSettingsGeneral"
 		}
 	},
 	computed: {
@@ -76,12 +75,8 @@ export default {
 		toggleSettingsOverlay() {
 			this.$store.commit("toggleSettingsOverlay");
 		},
-		saveSettingsAndClose() {
-			this.saveOnClose = true;
-			//setTimeout is necessary to allow the saveOnClose prop to update in the child components
-			setTimeout(() => {
-				this.toggleSettingsOverlay();
-			}, 0);			
+		saveSettingsAndClose() {			
+			this.toggleSettingsOverlay();		
 		},
 		goToTab(tabId) {
 			this.currentTab = tabId;
@@ -99,6 +94,10 @@ export default {
 	z-index: 9999;
 }
 
+.settings-overlay {
+	--scaling: 1.07;
+}
+
 .settings-background {
 	position: absolute;
 	top: 0; bottom: 0;
@@ -108,7 +107,7 @@ export default {
 	background-position: center center;
 	background-repeat: no-repeat;
 	background-size: cover;
-	transform: scale(1.07);
+	transform: scale(var(--scaling));
 }
 
 .settings-inner {
@@ -145,9 +144,8 @@ h2 {
 	border-bottom: 1px solid currentColor;
 }
 
-.tab-item a {
-	color: currentColor;
-	text-decoration: none;
+.tab-item {
+	padding: 1em;
 }
 
 .tab-item:not(:first-of-type) {
@@ -241,11 +239,11 @@ h2 {
 }
 
 .fade-settings-enter {
-	transform: scale(1.1);
+	transform: scale(var(--scaling));
 }
 
 .fade-settings-leave-to {
-	transform: scale(0.8);
+	transform: scale(calc(1 / var(--scaling)));
 }
 
 .switch-tab-enter-active, .switch-tab-leave-active {

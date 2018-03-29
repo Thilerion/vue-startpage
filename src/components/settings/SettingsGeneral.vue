@@ -18,7 +18,6 @@
 
 <script>
 export default {
-	props: ['saveOnClose'],
 	data() {
 		return {
 			username: null,
@@ -42,7 +41,7 @@ export default {
 		this.currentUnsplashCollection = this.$store.getters.currentUnsplashCollection;
 	},
 	beforeDestroy() {
-		if (this.saveOnClose === true) this.save();
+		this.save();
 	}
 }
 </script>

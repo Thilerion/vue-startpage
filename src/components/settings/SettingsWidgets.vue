@@ -41,7 +41,6 @@
 
 <script>
 export default {
-	props: ["saveOnClose"],
 	data() {
 		return {
 			componentsEnabled: {}
@@ -58,7 +57,7 @@ export default {
 		this.componentsEnabled = this.$store.getters.componentsEnabled;
 	},
 	beforeDestroy() {
-		if (this.saveOnClose === true) this.save();
+		this.save();
 	}
 };
 </script>
