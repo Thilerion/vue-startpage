@@ -10,7 +10,7 @@
 		<div class="list-items">
 			<transition name="slide-news">
 				<div v-for="(item, index) in rssFeedItems" :key="index" v-if="index === currentIndex" class="list-item">
-					<a href="#">{{item.title}}</a>
+					<a :href="item.link" target="_blank">{{item.title}}</a>
 				</div>
 			</transition>
 		</div>		

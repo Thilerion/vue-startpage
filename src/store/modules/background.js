@@ -2,7 +2,7 @@ import { saveToStorage, getFromStorage } from '@/api/localstorage';
 
 export default {
 	state: {
-		defaultBackground: require('@/assets/default_background.jpg'),
+		defaultBackground: '/img/default_background.jpg',
 		useDefaultBackground: false,
 		unsplashBaseUrl: "https://source.unsplash.com/collection/",
 		unsplashCollections: [
