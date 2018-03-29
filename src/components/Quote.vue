@@ -48,7 +48,7 @@ export default {
 	max-width: 50em;
 	padding: 1em;
 	position: relative;
-	user-select: none;
+	cursor:default;
 }
 
 .quote-wrapper:not(:first-of-type) {
